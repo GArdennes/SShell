@@ -6,6 +6,7 @@ char **parse_input(char *input)
 {
 	int i = 0;
 	char **args;
+	char *token;
 
 	args = malloc(sizeof(char *) * (MAX_ARGS));
 
