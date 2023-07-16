@@ -1,0 +1,52 @@
+REQUIREMENTS
+All your files will be compiled with "gcc -Wall -Werror -Wextra -pedantic -std=gnu89"
+
+Your code should use the "Betty" style
+
+Your code should not have any memory leaks
+
+Each file should have no more than 5 functions per file
+
+Your header files should be guarded
+
+Use system calls only when you need to
+
+Write a README with the description of your project
+
+You should have an AUTHORS file at the root of your 
+repository, listing all individuals having contributed 
+content to the repository.
+
+
+LIST OF ALLOWED FUNCTIONS
+access
+chdir
+close
+closedir
+execve
+exit
+_exit
+fflush
+fork
+free
+getcwd
+getline
+getpid
+isatty
+kill
+malloc
+open
+opendir
+perror
+read
+readdir
+signal
+stat
+lstat
+fstat
+strtok
+wait
+waitpid
+wait3
+wait4
+write
