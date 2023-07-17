@@ -1,0 +1,134 @@
+REVIEW OF SUPER_SIMPLE_SHELL
+0. Program that prints all the arguments without using ac.
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(int argc, char **argv)
+{
+int i = 0;
+int counter;
+
+while(argv[i] != NULL)
+{
+i++;
+}
+
+for (counter = 0; counter < i; counter++)
+{
+printf("%s",argv[counter]);
+}
+
+return 0;
+}
+
+
+1. Program that prints "$ ", wait for the user to enter a command, prints it on the next line
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+char *buffer;
+size_t len = 32;
+size_t string;
+
+buffer = malloc(len * sizeof(char));
+if (buffer == NULL)
+return -1;
+
+write(STDOUT_FILENO, "$ ", 2);
+string = getline(&buffer,&len,stdin);
+printf("You typed:%s \n",buffer);
+
+return 0;
+}
+
+1B. Write your own version of 'getline'
+
+
+2. A function that splits a string and returns an array of each word of the string.
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void)
+{
+//initialize string
+char *string = "I wish I knew it all";
+
+//initialize array
+char *characters;
+
+//loop to iterate through the string
+characters = strtok(string, " ");
+if (characters == NULL)
+return 0;
+
+while (character != NULL)
+{
+printf("Words: %s", characters);
+characters = strtok(NULL, " ");
+}
+
+//return array of each word
+return 0;
+}
+
+3. Write a program that executes the command "ls -l /tmp" in 5 different child processes. Each child should be created by the same process (the father). Wait for a child to exit before creating a new child.
+#include <stdio.h>
+#include <unistd.h>
+
+int main(void)
+{
+pid_t parent = 0;
+pid_t child;
+int count = 0;
+char *command[] = {"ls -l /tmp"};
+
+while(count < 5)
+{
+child = fork();
+switch(child)
+{
+case parent:
+execve(command[0],command,stdin);
+break;
+default:
+wait(NULL);
+count++;
+}
+}
+return 0;
+}
+
+4. Write a first version of a super simple shell that can run commands with their full path
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+
+int main(void)
+{
+int len = 1024, ready;
+size_t check;
+pid_t child;
+char *command = malloc(len * sizeof(char));
+
+if (command == NULL)
+return -1;
+
+write(STDOUT_FILENO,"$ ",2);
+check = getline(&command,&len,stdin);
+child = fork()
+if (child == 0)
+{
+ready = execve(*command, command, stdin);
+}
+else
+{
+wait(NULL);
+}
+
+return 0;
+}
