@@ -1,0 +1,185 @@
+3. SIMPLE SHELL 0.3
+Write a shell program that handles 'PATH', 'fork' must not be called if the command doesn't exist.
+
+VERIFICATION CMDS
+--------------------
+1. /bin/ls
+2. ls
+3. ls -l /tmp
+4. pwd : prints the current working directory
+5. mkdir : creates a new directory
+6. touch : creates an empty file
+7. cat : reads and displays the contents of a file
+8. rm : removes files or directories
+
+4. SIMPLE SHELL 0.4
+Write a shell program that implements an 'exit' built-in, that exits the shell. You don't have to handle any argument to the built-in exit.
+
+VERIFICATION CMDS
+--------------------
+exit : exits the shell
+
+5. SIMPLE SHELL 1.0
+Write a shell program that implements the 'env' built-in, that prints the current environment
+
+VERIFICATION CMDS
+--------------------
+env : prints current environment variables
+echo $PATH : displays the value of the PATH environment variable
+export VAR=value : sets the value of an environment variable
+unset VAR: removes an environment variable
+which command: displays the path to the executable file of a given command.
+
+
+6. SIMPLE SHELL 0.1.1
+Write your own getline function, use a buffer to read many chars at once and call the least possible the 'read' system call. You will need to use static variables. You are not allowed to use getline.
+
+7. SIMPLE SHELL 0.2.1
+Write your own strtok
+
+8. SIMPLE SHELL 0.4.1
+Write a shell program to handle arguments for the built-in exit. 'exit status' where 'status' is an integer used to exit the shell
+
+VERIFICATION CMDS
+---------------------
+exit 98
+exit : terminates the shell gracefully.
+exit 0 : exits the shell with a status code of 0, indicating successful termination.
+exit 1 : exits the shell with status code of 1, indicating error or failure.
+exit 127 : exits the shell with a status code of 127, indicating command not found
+echo  $? : displays the exit status of the last command.
+
+9. SETENV, UNSETENV
+Write a shell program that implements the 'setenv' and 'unsetenv' builtin commands. Each of them should print something on stderr on failure.
+
+VERIFICATION CMDS
+-------------------
+setenv VAR_NAME VAR_VALUE: sets an environment variable with the specified name and value.
+unsetenv VAR_NAME : removes the specified environment variable
+setenv : without any arguments the command should print an error message on stderr
+unsetenv : without any arguments the command should display an error message on stderr.
+echo $VAR_NAME : after setting an environment variable using 'setenv', you can use this command to verify that the variable is accessible and has the expected value.
+
+
+10. CD
+Write a shell program that implements the builtin command 'cd'. If no argument is given to 'cd' the command must be interpreted like 'cd $HOME'. You have to handle the command 'cd -'. You have to update the environment variable 'PWD' when you change directory.
+
+VERIFICATION CMDS
+-------------------
+cd : running this command without any arguments should change the current working directory to the value of 'HOME' environment variable. You can verify the current working directory using 'pwd'.
+cd /path/to/directory : changes the current working directory to the specified directory path. You can verify the current working directory using 'pwd'.
+cd - : changes the current working directory to the previous directory that the user was in. You can verify the current working directory using 'pwd'.
+echo $PWD : After changing the directory using the 'cd' command, you can use this command to verify that the 'PWD' environment variable has been updated to correctly reflect the new current working directory.
+cd nonexistent_directory : running this command with a directory that doesn't exist should print an appropriate error message.
+
+11. ;
+Write a shell program that handles the command separator ;
+
+VERIFICATION CMDS
+-------------------
+ls /var ; ls /var
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+
+ls /hbtn ; ls /var
+ls: cannot access /hbtn: No such file or directory
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+
+ls /var ; ls /hbtn
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+ls: cannot access /hbtn: No such file or directory
+
+ls /var ; ls /hbtn ; ls /var ; ls /var
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+ls: cannot access /hbtn: No such file or directory
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+
+12. && and ||
+Write a shell program that handles the '&&' and '||' shell logical operators.
+
+VERIFICATION CMDS
+------------------
+ls /var && ls /var
+ans
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+
+ls /hbtn && ls /var
+ans
+ls: cannot access /hbtn: No such file or directory
+
+ls /var && ls /var && ls /var && ls /htbn
+ans
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+ls: cannot access /hbtn: No such file or directory
+
+ls /var && ls /var && ls /var && ls /htbn && ls /htbn
+ans
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+ls: cannot access /hbtn: No such file or directory
+
+ls /var || ls /var
+ans
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+
+ls /hbtn || ls /var
+ans
+ls: cannot access /hbtn: No such file or directory
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+
+ls /hbtn || ls /hbtn || ls /hbtn || ls /var
+ans
+ls: cannot access /hbtn: No such file or directory
+ls: cannot access /hbtn: No such file or directory
+ls: cannot access /hbtn: No such file or directory
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+
+ls /hbtn || ls /htbn || ls /hbtn || ls /var || ls /var
+ans
+ls: cannot access /hbtn: No such file or directory
+ls: cannot access /hbtn: No such file or directory
+ls: cannot access /hbtn: No such file or directory
+backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
+
+
+13. alias
+Write a shell program that implements the 'alias' built-in command.
+
+VERIFICATION CMDS
+-------------------
+alias : running this command without arguments should display a list of currently defined aliases.
+alias myls = "/bin/ls" : This command should create an alias named 'myls' for the /bin/ls command. You can test the alias by running 'myls' and verifying that it behaves the same as running '/bin/ls'.
+unalias myls : This command should remove the 'myls' alias. After executing this command, you can attempt to run 'myls' again and verify that it no longer functions as an alias.
+alias myls = "ls -l /tmp" : This command creates a new alias named 'myls' that executes the 'ls -l /tmp' command.
+
+14. VARIABLES
+Write a shell program that handles the variable replacement. That handles the '$?' variable. That handles the '$$' variable.
+
+VERIFICATION CMDS
+------------------
+echo $SHELL : prints the value of the 'SHELL' environment variable.
+echo S? : after executing a command, you can use this command to print the exit status of the last executed command.
+echo $$ : The command should print the PID of the shell program.
+echo "The exit status is $?" : This command combines variable replacement with the output text. It should print the text along with the exit status of the last executed command.
+command_not_found : running a command that does not exist should print an appropriate error message, indicating that the command is not found.
+
+15. COMMENTS
+Write a shell program that handles the comments (#).
+
+VERIFICATION CMDS
+------------------
+# This is a comment : this command should treat the entire line as a comment and should ignore it.
+echo "Hello World" # This is a comment : This command combines a valid command with a comment.
+ls -l /tmp # List files in /tmp directory : This command includes a comment after a valid command.
+# : Running this command should treat the entire line as a comment and should ignore it.
+echo "This is not a comment" # echo "This is a comment" : This command demonstrates that comments should only be recognized if the # character appears at the beginning of a line or after a valid command.
+
+16. FILE AS INPUT
+Write a shell program that can take a file as a command line argument. The file contains all the commands that your shell should run before exiting. The file should contain one command per line. In this mode, the shell should not print a prompt and should not read from stdin.
+
+7.
