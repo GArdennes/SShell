@@ -1,0 +1,32 @@
+ANOTHER SIMPLE SHELL
+ALGORITHM
+MAIN.C
+--------------------
+//main entry point initializes with
+argc and argv
+//the code serves to check if argc == 2
+//Next the second argument is run as a file, in the instance of errors an error catch is declared
+//the program calls functions associated with reading information from files
+//the last function (hsh) is responsible for the user interaction with the shell
+
+SHELL_LOOP.C
+--------------------
+//the hsh function defines the prompt that should be displayed by the shell and the execution of the command.
+//based on the arguments supplied in the main and the conditionals in the code, the function considers what other function to call
+
+BUILTIN.C
+--------------------
+//The file contains function declarations for the exit, cd and help instances
+
+BUILTIN1.C
+--------------------
+//The file contains function declarations that replicate the history and alias command
+
+ENVIRON.C
+--------------------
+//The file contains function declarations for the setenv, unsetenv and env instances
+
+
+
+
+
