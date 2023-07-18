@@ -40,3 +40,31 @@ int _strncmp(char *s1, const char *s2, size_t n)
 		return (0);
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
+
+/**
+ * _puts - prints string
+ * @str: characters to print
+ * Returns: On success, string is printed
+ */
+void _puts(char *str)
+{
+	int count = 0;
+
+	if (str == NULL)
+		return;
+	while (str[i] != '\0')
+	{
+		_putchar(str[i]);
+		i++;
+	}
+}
+
+/**
+ * _putchar - prints single character
+ * @ch: character to be inserted
+ * Return: On success the character
+ */
+char _putchar(char ch)
+{
+	return (write(1, &ch, 1));
+}
