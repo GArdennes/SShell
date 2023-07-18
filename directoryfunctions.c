@@ -2,9 +2,6 @@
 
 int _cd(char *dir)
 {
-	char *pdir, buffer[MAX_ARGS];
-
-	pdir = getcwd(buffer, MAX_ARGS);
 	if (dir == NULL)
 	{
 		if (chdir(_getenv("HOME")) == -1)
@@ -19,7 +16,5 @@ int _cd(char *dir)
 	{
 		perror("chdir");
 	}
-	_setenv("OLDPWD", _getenv("PWD"));
-	_setenv("PWD", pdir);
 	return (0);
 }

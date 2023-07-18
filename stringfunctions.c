@@ -52,10 +52,10 @@ void _puts(char *str)
 
 	if (str == NULL)
 		return;
-	while (str[i] != '\0')
+	while (str[count] != '\0')
 	{
-		_putchar(str[i]);
-		i++;
+		_putchar(str[count]);
+		count++;
 	}
 }
 

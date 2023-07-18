@@ -41,12 +41,11 @@ void execute_commands(char **commands);
 void execute_file(char *filename);
 void handle_comments(char *command);
 void exit_shell(char **args);
-//char *_getenv(char *name);
 int _unsetenv(char *name);
 int _setenv(char *name, char *value);
 void _puts(char *str);
 char _putchar(char ch);
-char _memset(char *s, char b, unsigned int n);
+char *_memset(char *s, char b, unsigned int n);
 
 
 #endif

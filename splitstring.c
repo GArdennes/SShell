@@ -67,6 +67,10 @@ char **split_str(char *input, char *delim)
 	token = _strtok(input, delim);
 	while (token != NULL)
 	{
+		if (i >= MAX_ARGS)
+		{
+			free(tokens);
+		}
 		tokens[i] = token;
 		token = _strtok(NULL, delim);
 		i++;

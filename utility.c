@@ -68,7 +68,7 @@ if (new_entry == NULL)
 return (-1);
 _memcpy(new_entry, name, nlen);
 new_entry[nlen] = '=';
-_memcpy(new_entry, nlen + 1, value, vlen);
+_memcpy(new_entry + nlen + 1, value, vlen);
 new_entry[entry_len - 1] = '\0';
 environ[i] = new_entry;
 return (0);
