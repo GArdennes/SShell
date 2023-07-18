@@ -18,6 +18,8 @@ char *_strtok(char *str, char *delim)
 	static char *nt;
 	unsigned int i;
 
+	if (str == NULL && delim == NULL)
+		return (NULL);
 	if (str != NULL)
 		nt = str;
 	ts = nt;
@@ -54,7 +56,7 @@ char *_strtok(char *str, char *delim)
 
 char **split_str(char *input, char *delim)
 {
-	char **tokens = malloc(sizeof(char *) * MAX_ARGS);
+	char **tokens = malloc(sizeof(char *) * MAX_ARGS), **new_tokens;
 	char *token;
 	int i = 0;
 
@@ -69,7 +71,13 @@ char **split_str(char *input, char *delim)
 	{
 		if (i >= MAX_ARGS)
 		{
-			free(tokens);
+			new_tokens = realloc(tokens, sizeof(char *) * (MAX_ARGS * 2));
+			if (new_tokens == NULL)
+			{
+				free(tokens);
+				return;
+			}
+			tokens = new_tokens;
 		}
 		tokens[i] = token;
 		token = _strtok(NULL, delim);
