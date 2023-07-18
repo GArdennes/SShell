@@ -33,7 +33,7 @@ int len = _strlen(name);
 
 for (i = 0; environ[i] != NULL; i++)
 {
-if (strncmp(environ[i], name, len) == 0 && environ[i][len] == '=')
+if (_strncmp(environ[i], name, len) == 0 && environ[i][len] == '=')
 {
 for (j = i; environ[j] != NULL; j++)
 environ[j] = environ[j + 1];
@@ -70,6 +70,8 @@ _memcpy(new_entry, name, nlen);
 new_entry[nlen] = '=';
 _memcpy(new_entry, nlen + 1, value, vlen);
 new_entry[entry_len - 1] = '\0';
+
+free(environ[i]);
 environ[i] = new_entry;
 return (0);
 }
@@ -97,6 +99,7 @@ new_environ[i] = environ[i];
 new_environ[env_size] = new_entry;
 new_environ[env_size + 1] = NULL;
 
+free(environ);
 environ = new_environ;
 
 return (0);
