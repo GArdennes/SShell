@@ -86,3 +86,24 @@ char *_getline()
 	handle_comments(buf);
 	return (buf);
 }
+
+/**
+ * _memset - fill a block of memory with a given value
+ * @s: string to check
+ * @b: character to check
+ * @n: number to check 
+ * Return: On success memory allocated
+ */
+char *_memset(char *s, char b, unsigned int n)
+{
+	char *string = s;
+
+	while (n > 0)
+	{
+		*s = b;
+		s++;
+		n--;
+	}
+
+	return (string);
+}
