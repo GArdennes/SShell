@@ -1,0 +1,128 @@
+PSEUDOCODE
+#include "shell.h"
+
+/**
+ *main - entry point
+ *@argc: argument count
+ *@argv: argument vector
+ *Return: On success number
+ */
+int main(int argc, char **argv)
+{
+/*
+initialize variables
+check if number of arguments is 2
+assume the second argument is a file
+try to open file
+if second argument is not a file
+catch and display error
+if second argument is a file, launch file manipulation functions
+*/
+int file;
+
+if (argc == 2)
+{
+file = open(argv[1], O_RDONLY);
+if (file == -1)
+{
+if (errno == EACCESS)
+exit(126);
+else if (errno == ENOENT)
+{
+print_error(argv[1]);
+exit(127);
+}
+}
+}
+shell();
+return (0);
+}
+
+
+/**
+ *shell - main simple shell interactive
+ *Return: On success interaction
+ */
+int shell(void)
+{
+/*
+initialize variables
+write prompt
+getline arguments
+split input
+parse inputs to function
+free memory
+*/
+return (0);
+}
+
+/**
+ *exit_shell - function to exit shell
+ *@args: array of strings to check
+ */
+void exit_shell(char **args)
+{
+int stat, i = 1;
+
+if (*args[i] == NULL)
+exit(EXIT_SUCCESS);
+
+if (*args[i])
+{
+stat = _atoi(*args[i]);
+if (stat == -1)
+{
+print_error("Illegal argument: ");
+_puts(*args[0]);
+_putchar('\n');
+return
+}
+}
+}
+
+/**
+ *_cd - duplicate of inbuilt function cd
+ *@args: arguments to check
+ *Return: On success change directory
+ */
+void _cd(char **args)
+{
+char *dir, buffer[MAX_ARGS];
+
+dir = getcwd(buffer, 1024);
+
+if (args[1] == NULL)
+{
+if (chdir(_getenv("HOME=")) == -1)
+chdir(_getenv("PWD="));
+}
+if (_strcmp(args[1], "-") == 0)
+{
+if (chdir(_getenv("OLDPWD=")) == -1)
+chdir(_getenv("PWD="));
+}
+if (chdir(args[1]) == -1)
+{
+print_error(args[1]);
+}
+_setenv("OLDPWD", _getenv("PWD="));
+_setenv("PWD", dir);
+}
+
+/**
+ *_set - precursor to _setenv
+ *@args: arguments to check
+ *Return: On success new env variable
+ */
+ void _set(char **args)
+{
+if (args[2] == NULL)
+{
+_puts("");
+return
+}
+else
+{
+_setenv(args[1],argv[2])
+}
+}

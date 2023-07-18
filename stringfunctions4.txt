@@ -1,0 +1,83 @@
+stringfunctions4
+functions to write 1
+_putchar()
+_memset()
+_puts()
+
+
+/**
+ *_puts - prints string
+ *@str: characters to check
+ *Return: On success the string
+ */
+void _puts(char *str)
+{
+int count = 0;
+
+if(str == NULL)
+return (NULL);
+
+while(str[i] != '\0')
+{
+_putchar(str[i]);
+i++
+}
+}
+
+/**
+*_putchar - prints single character
+*@ch: character to check
+*Return: On success the character
+*/
+char _putchar(char ch)
+{
+return (write(1,&ch,1));
+}
+
+
+/**
+ *_memset - fill a block of memory with value
+ *@s: character to check
+ *@b: character to check
+ *@n: number to check
+ *Return: On success memory allocation
+ */
+char *_memset(char *s, char b, unsigned int n);
+{
+/*
+char *buffer to create space
+find the length of the string 
+allocate memory with malloc
+create a loop to fill string with character
+for the number of integer value times
+return string
+*/
+int count, len;
+char *buffer;
+
+for (count = 0; s[count] != '\0'; count++)
+{
+;
+}
+
+buffer = malloc(count + n);
+for(len = 0; len < n; len++)
+{
+*s = b;
+s++
+}
+
+return (string);
+}
+
+functions to write 2
+app_history - function to update history file
+signalHandler - function that blocks ctrl - C
+get_history - function to retrieve history file
+build_history - building a structured linked list to handle the history updates.
+print_error - function for generic error
+_setenv - duplicate of int setenv(char *name, char *value, int *reset);
+_unsetenv - duplicate of int unsetenv(char *name)
+_getenv - duplicate of char *getenv(char *name)
+
+

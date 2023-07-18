@@ -41,6 +41,9 @@ void execute_commands(char **commands);
 void execute_file(char *filename);
 void handle_comments(char *command);
 void exit_shell(char **args);
+//char *_getenv(char *name);
+int _unsetenv(char *name);
+int _setenv(char *name, char *value);
 
 
 #endif
