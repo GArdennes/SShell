@@ -4,23 +4,26 @@ int _cd(char *dir)
 {
 	if (dir == NULL)
 	{
-		if (chdir(_getenv("HOME")) == -1)
+		dir = _getenv("HOME");
+		if (chdir(dir) == -1)
 		{
-			perror("chdir");
+			perror("cd");
 			return (-1);
 		}
 	}
 	else if (_strcmp(dir, "-") == 0)
 	{
-		if (chdir(_getenv("OLDPWD")) == -1)
+		dir = _getenv("OLDPWD");
+		if (chdir(dir) == -1)
 		{
-			perror("chdir");
+			perror("cd");
 			return (-1);
 		}
 	}
 	else if (chdir(dir) == -1)
 	{
-		perror("chdir");
+		perror("cd");
+		return (1);
 	}
 	return (0);
 }
