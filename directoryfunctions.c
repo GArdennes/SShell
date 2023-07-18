@@ -5,12 +5,18 @@ int _cd(char *dir)
 	if (dir == NULL)
 	{
 		if (chdir(_getenv("HOME")) == -1)
-			chdir(_getenv("PWD"));
+		{
+			perror("chdir");
+			return (-1);
+		}
 	}
 	else if (_strcmp(dir, "-") == 0)
 	{
 		if (chdir(_getenv("OLDPWD")) == -1)
-			chdir(_getenv("PWD"));
+		{
+			perror("chdir");
+			return (-1);
+		}
 	}
 	else if (chdir(dir) == -1)
 	{
