@@ -75,7 +75,7 @@ char **split_str(char *input, char *delim)
 			if (new_tokens == NULL)
 			{
 				free(tokens);
-				return;
+				return (NULL);
 			}
 			tokens = new_tokens;
 		}
