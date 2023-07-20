@@ -1,5 +1,58 @@
 ANOTHER SIMPLE SHELL
 ALGORITHM
+SHELL.H
+--------------------
+int _putchar(char c)
+void _puts(char *str)
+int _eputchar(char c)
+int _eput(char c)
+void print_error(info_t *info, char *str)
+void clear_info(info_t *info)
+int interactive(info_t *info)
+char **_strtok2(char *str, char d)
+int is_delim(char c, char *delim)
+char **_strtok(char *str, char *d)
+char *_strdup(const char *str)
+int replace_string(char **old, char *new)
+int _strcmp(char *s1, char *s2)
+char *_strdup(const char *str)
+char *convert_number(long int num, int base, int flags)
+char *starts_with(const char *haystack, const char *needle)
+char *_getenv(info_t *info, char *name)
+list_t *node_starts_with(list_t *node, char *prefix, char c)
+int replace_vars(info_t *info)
+void set_info(info_t *info, char **av)
+void ffree(char **pp)
+void free_list(list_t **head_ptr)
+void free_info(info_t *info, int all)
+int _strlen(char *s)
+ssize_t read_buf(info_t *info, char *buf, size_t *i)
+char *_strchr(char *s, char c)
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+char *_strncat(char *dest, char *src, int n)
+char *_strncpy(char *dest, char *src, int n)
+int _getline(info_t *info, char **ptr, size_t *length)
+void remove_comments(char *buf)
+ssize_t input_buf(info_t *info, char **buf, size_t *len)
+ssize_t get_input(info_t *info)
+int find_builtin(info_t *info)
+int is_cmd(info_t *info, char *path)
+char *dup_chars(char *pathstr, int start, int stop)
+char *_strcat(char *dest, char *src)
+char *find_path(info_t *info, char *pathstr, char *cmd)
+size_t list_len(const list_t *h)
+char *_strcpy(char *dest, char *src)
+char **list_to_strings(list_t *head)
+char **get_environ(info_t *info)
+void fork_cmd(info_t *info)
+char *_memset(char *s, char b, unsigned int n)
+list_t *add_node(list_t **head, const char *str, int num)
+list_t *add_node_end(list_t **head, const char *str, int num)
+int _setenv(info_t *info, char *var, char *value)
+
+
+
+
 MAIN.C
 --------------------
 //main entry point initializes with
@@ -9,24 +62,561 @@ argc and argv
 //the program calls functions associated with reading information from files
 //the last function (hsh) is responsible for the user interaction with the shell
 
+int main(int argc, char **argv)
+{
+_puts
+_putchar
+populate_env_list(info)
+read_history(info)
+hsh(info, av)
+}
+
 SHELL_LOOP.C
 --------------------
 //the hsh function defines the prompt that should be displayed by the shell and the execution of the command.
 //based on the arguments supplied in the main and the conditionals in the code, the function considers what other function to call
 
+int hsh(info_t *info, char **av)
+{
+clear_info()
+interactive()
+_puts()
+_putchar()
+get_input()
+set_info()
+find_builtin()
+find_cmd()
+free_info()
+write_history()
+}
+
+int find_builtin(info_t *info)
+{
+_strcmp()
+}
+
+void find_cmd(info_t *info)
+{
+is_delim()
+find_path()
+_getenv()
+fork_cmd()
+interactive()
+is_cmd()
+print_error()
+}
+
+void fork_cmd(info_t *info)
+{
+get_environ()
+free_info()
+print_error()
+}
+
 BUILTIN.C
 --------------------
 //The file contains function declarations for the exit, cd and help instances
+
+int _myexit(info_t *info)
+{
+_erratoi()
+print_error()
+_puts()
+_putchar()
+}
+
+int _mycd(info_t *info)
+{
+_puts()
+_getenv()
+_strcmp()
+_putchar()
+print_error()
+_setenv()
+}
+
+int _myhelp(info_t *info)
+{
+_puts()
+}
 
 BUILTIN1.C
 --------------------
 //The file contains function declarations that replicate the history and alias command
 
+int _myhistory(info_t *info)
+{
+print_list()
+}
+
+int unset_alias(info_t *info, char *str)
+{
+_strchr()
+delete_node_at_index()
+get_node_index()
+node_starts_with()
+}
+
+int set_alias(info_t *info, char *str)
+{
+_strchr()
+unset_alias()
+add_node_end()
+}
+
+int print_alias(list_t *node)
+{
+_strchr()
+_putchar()
+_puts()
+}
+
+int _myalias(info_t *info)
+{
+print_alias()
+_strchr()
+set_alias()
+node_starts_with()
+}
+
 ENVIRON.C
 --------------------
 //The file contains function declarations for the setenv, unsetenv and env instances
 
+int _myenv(info_t *info)
+{
+print_list_str()
+}
+
+char *_getenv(info_t *info, char *name)
+{
+starts_with()
+}
+
+int _mysetenv(info_t *info)
+{
+_puts()
+_setenv()
+}
+
+int _myunsetenv(info_t *info)
+{
+_puts()
+_unsetenv()
+}
+
+int populate_env_list(info_t *info)
+{
+add_node_end()
+}
+
+GETLINE.C
+--------------------------
+//contains cmds to retrieve user input from interactive interface
+
+ssize_t input_buf(info_t *info, char **buf, size_t *len)
+{
+_getline()
+remove_comments()
+build_history_list()
+}
+
+ssize_t get_input(info_t *info)
+{
+_putchar()
+input_buf()
+check_chain()
+is_chain()
+_strlen()
+}
+
+ssize_t read_buf(info_t *info, char *buf, size_t *i)
+{
+
+}
+
+int _getline(info_t *info, char **ptr, size_t *length)
+{
+read_buf()
+_strchr()
+_realloc()
+_strncat()
+_strncpy()
+}
+
+void sigintHandler(__attribute__((unsused))int sig_num)
+{
+_puts()
+_putchar()
+}
 
 
+GETENV.C
+---------------------------
+//contains functions that serve as a supplementary for environment manipulation
+
+char **get_environ(info_t *info)
+{
+list_to_strings()
+}
+
+int _unsetenv(info_t *info, char *var)
+{
+starts_with()
+delete_node_at_index()
+}
+
+int _setenv(info_t *info, char *var, char *value)
+{
+_strlen()
+_strcpy()
+_strcat()
+starts_with()
+add_node_end()
+}
 
 
+VARS.C
+-----------------------------
+//functions for input checks
+
+int is_chain(info_t *info, char *buf, size_t *p)
+{
+
+}
+
+void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
+{
+
+}
+
+int replace_alias(info_t *info)
+{
+node_starts_with()
+_strchr()
+_strdup()
+}
+
+int replace_vars(info_t *info)
+{
+_strcmp()
+replace_string()
+_strdup()
+convert_number()
+node_starts_with()
+}
+
+int replace_string(char **old, char *new)
+{
+
+}
+
+TOKENIZER.C
+------------------------
+char **_strtok(char *str, char *d)
+{
+is_delim()
+}
+
+char **_strtok2(char *str, char d)
+{
+
+}
+
+REALLOC.C
+---------------------------
+char *_memset(char *s, char b, unsigned int n)
+{
+
+}
+
+void ffree(char **pp)
+{
+
+}
+
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+{
+
+}
+
+PARSER.C
+----------------------------
+int is_cmd(info_t *info, char *path)
+{
+
+}
+
+char *dup_chars(char *pathstr, int start, int stop)
+{
+
+}
+
+char *find_path(info_t *info, char *pathstr, char *cmd)
+{
+_strlen()
+starts_with()
+is_cmd()
+dup_chars()
+_strcat()
+}
+
+STRING1.C
+------------------------------
+char *_strcpy(char *dest, char *src)
+{
+
+}
+
+char *_strdup(const char *str)
+{
+
+}
+
+void _puts(char *str)
+{
+_putchar()
+}
+
+int _putchar(char c)
+{
+
+}
+
+STRING.C
+-------------------------------
+int _strlen(char *s)
+{
+
+}
+
+int _strcmp(char *s1, char *s2)
+{
+
+}
+
+char *starts_with(const char *haystack, const char *needle)
+{
+
+}
+
+char *_strcat(char *dest, char *src)
+{
+
+}
+
+MEMORY.C
+-------------------------------
+int bfree(void **ptr)
+{
+
+}
+
+LIST1.c
+------------------------------
+size_t list_len(const list_t *h)
+{
+
+}
+
+char **list_to_strings(list_t *head)
+{
+list_len()
+_strlen()
+_strcpy()
+}
+
+size_t print_list(const list_t *h)
+{
+_puts()
+_putchar()
+}
+
+list_t *node_starts_with(list_t *node, char *prefix, char c)
+{
+starts_with()
+}
+
+ssize_t get_node_index(list_t *head, list_t *node)
+{
+
+}
+
+
+LISTS.C
+----------------------------
+list_t *add_node(list_t **head, const char *str, int num)
+{
+_memset()
+_strdup()
+}
+
+list_t *add_node_end(list_t **head, const char *str, int num)
+{
+_memset()
+_strdup()
+}
+
+size_t print_list_str(const list_t *h)
+{
+_puts()
+}
+
+int delete_node_at_index(list_t **head, unsigned int index)
+{
+
+}
+
+void free_list(list_t **head_ptr)
+{
+
+}
+
+
+HISTORY.C
+--------------------------------
+char *get_history_file(info_t *info)
+{
+_getenv()
+_strlen()
+_strcpy()
+_strcat()
+}
+
+int write_history(info_t *info)
+{
+get_history_file()
+_putsfd()
+_putfd()
+}
+
+int read_history(info_t *info)
+{
+get_history_file()
+build_history_list()
+delete_node_at_index()
+renumber_history()
+}
+
+int build_history_list(info_t *info, char *buf, int linecount)
+{
+add_node_end()
+}
+
+int renumber_history(info_t *info)
+{
+
+}
+
+EXITS.C
+---------------------------------
+char *_strncpy(char *dest, char *src, int n)
+{
+
+}
+
+char *_strncat(char *dest, char *src, int n)
+{
+
+}
+
+char *_strchr(char *s, char c)
+{
+
+}
+
+ERRORS1.c
+---------------------------------
+int _erratoi(char *s)
+{
+
+}
+
+void print_error(info_t *info, char *estr)
+{
+_eputs()
+print_d()
+}
+
+int print_d(int input, int fd)
+{
+_putchar()
+}
+
+char *convert_number(long int num, int base, int flags)
+{
+
+}
+
+void remove_comments(char *buf)
+{
+
+}
+
+ERRORS.C
+-------------------------------
+void _eputs(char *str)
+{
+_eputchar()
+}
+
+int _eputchar(char c)
+{
+
+}
+
+int _pufd(char c, int fd)
+{
+
+}
+
+int _putsfd(char *str, int fd)
+{
+_putfd()
+}
+
+
+ATOI.C
+-------------------------------
+int interactive(info_t *info)
+{
+
+}
+
+int is_delim(char c, char *delim)
+{
+
+}
+
+int _isalpha(int c)
+{
+
+}
+
+int _atoi(char *s)
+{
+
+}
+
+
+GETINFO.C
+----------------------------------
+void clear_info(info_t *info)
+{
+
+}
+
+void set_info(info_t *info, char **av)
+{
+_strtok()
+_strdup()
+replace_alias(info);
+replace_vars(info);
+}
+
+void free_info(info_t *info, int all)
+{
+ffree()
+free_list()
+_putchar()
+}

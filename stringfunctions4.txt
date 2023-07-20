@@ -75,8 +75,8 @@ app_history - function to update history file
 signalHandler - function that blocks ctrl - C
 get_history - function to retrieve history file
 build_history - building a structured linked list to handle the history updates.
-print_error - function for generic error
-_setenv - duplicate of int setenv(char *name, char *value, int *reset);
+print_error - function for generic error(shell_name: [command]: command not found)
+_setenv - duplicate of int setenv(char *name, char *value);
 _unsetenv - duplicate of int unsetenv(char *name)
 _getenv - duplicate of char *getenv(char *name)
 
