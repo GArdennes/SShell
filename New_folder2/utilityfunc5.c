@@ -28,7 +28,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
     static char buf[MAX_ARGS];
     static size_t i, len;
     size_t k;
-    ssize_t r = 0; s = 0;
+    ssize_t r = 0, s = 0;
     char *p = NULL, *new_p = NULL, *c;
 
     p = *ptr;
@@ -66,7 +66,7 @@ void remove_comments(char *buf)
 
     for (i = 0; buf[i] != '\0'; i++)
     {
-        if (buf[i] == '#' && (!i || buf[i - 1] == ''))
+        if (buf[i] == '#' && (!i || buf[i - 1] == ' '))
         {
             buf[i] = '\0';
             break;
@@ -139,4 +139,11 @@ ssize_t get_input(info_t *info)
     }
     *buf_p = buf;
     return (r);
+}
+
+void siginthandler(__attribute((unused))int sig_num)
+{
+	_puts("\n");
+	_puts("$ ");
+	_eput(-1);
 }

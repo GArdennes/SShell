@@ -1,6 +1,6 @@
 #include "shell.h"
 
-
+/*
 void execute_single_command(char **args)
 {
 	if (_strcmp(args[0], "cd") == 0)
@@ -14,6 +14,7 @@ void execute_single_command(char **args)
 	else
 		execute_command(args);
 }
+*/
 
 /**
  * execute_commands - function to select command
@@ -27,9 +28,18 @@ void execute_commands(char **commands)
 	while (commands[i] != NULL)
 	{
 		args = split_str(commands[i], " \t\n");
-		if (args[0] != NULL)
+		if (args[0] != NULL && args !=NULL)
 		{
-			execute_single_command(args);
+			if (_strcmp(args[0], "cd") == 0)
+				_cd(args[1]);
+			else if (_strcmp(args[0], "echo") == 0)
+				echo_func(args);
+			else if (_strcmp(args[0], "exit") == 0)
+				exit_shell(args);
+			else if (_strcmp(args[0], "env") == 0)
+				printenv();
+			else
+				execute_command(args);
 		}
 		free(args);
 		i++;

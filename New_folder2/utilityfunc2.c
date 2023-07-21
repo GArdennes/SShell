@@ -47,12 +47,12 @@ char *convert_number(long int num, int base, int flags)
     char *ptr;
     unsigned long n = num;
 
-    if (!(flags & CONVERT_UNSIGNED) && num < 0)
+    if (!(flags & 2) && num < 0)
     {
         n = -num;
         sign = '-';
     }
-    array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
+    array = flags & 1 ? "0123456789abcdef" : "0123456789ABCDEF";
     ptr = &buffer[49];
     *ptr = '\0';
 
@@ -66,7 +66,7 @@ char *convert_number(long int num, int base, int flags)
     return (ptr);
 }
 
-char *starts_with(consts char *haystack, const char *needle)
+char *starts_with(const char *haystack, const char *needle)
 {
     while (*needle)
     {

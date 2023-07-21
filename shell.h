@@ -35,7 +35,6 @@ int _cd(char *dir);
 void printenv(void);
 char *_getenv(char *name);
 void echo_func(char **cmd);
-void execute_single_command(char **args);
 void execute_command(char **command);
 void execute_commands(char **commands);
 void execute_file(char *filename);

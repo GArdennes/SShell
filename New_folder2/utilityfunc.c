@@ -55,6 +55,7 @@ int is_delim(char c, char *delim)
             return (1);
         return (0);
     }
+    return (0);
 }
 
 char **_strtok(char *str, char *d)
@@ -77,7 +78,7 @@ char **_strtok(char *str, char *d)
     s = malloc((1 + numwords) * sizeof(char *));
     if (!s)
         return (NULL);
-    for (i = 0; j = 0; j < numwords; j++)
+    for (i = 0, j = 0; j < numwords; j++)
     {
         while (is_delim(str[i], d))
             i++;
@@ -90,7 +91,7 @@ char **_strtok(char *str, char *d)
             for (k = 0; k < j; k++)
                 free(s[k]);
             free(s);
-            return (NULL):
+            return (NULL);
         }
         for (m = 0; m < k; m++)
             s[j][m] = str[i++];
@@ -99,7 +100,7 @@ char **_strtok(char *str, char *d)
     s[j] = NULL;
     return (s);
 }
-
+/*
 char *_strdup(const char *str)
 {
     int length = 0;
@@ -116,3 +117,4 @@ char *_strdup(const char *str)
         ret[length] = *--str;
     return (ret);
 }
+*/

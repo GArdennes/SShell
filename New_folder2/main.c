@@ -12,7 +12,7 @@ int main(int argc, char **argv)
         {
             if (errno == ENOENT)
             {
-                print_error(argv[0]);
+                print_error(info, argv[0]);
                 exit(127);
             }
             if (errno == EACCES)
@@ -22,7 +22,7 @@ int main(int argc, char **argv)
         info->readfd = fd;
     }
     populate_env_list(info);
-    hsh(info, av);
+    hsh(info, argv);
     return (EXIT_SUCCESS);
 }
 
@@ -33,7 +33,7 @@ void hsh(info_t *info, char **argv)
 
     while(user_input != -1 && i != -2)
     {
-        clear_node(info);
+        clear_info(info);
         if (isatty(STDIN_FILENO) && info->readfd <= 2)
             _puts("$ ");
         _eputchar(-1);
@@ -58,7 +58,7 @@ void hsh(info_t *info, char **argv)
             exit(info->status);
         exit(info->err_num);
     }
-    return (i);
+    return;
 }
 
 int find_builtin(info_t *info)
@@ -66,7 +66,6 @@ int find_builtin(info_t *info)
     int i, built_in = -1;
     builtin_table builtinblocks[] = {
         {"exit", _myexit},
-        {"env", _myenv},
         {"cd", _mycd},
         {NULL, NULL}
     };
