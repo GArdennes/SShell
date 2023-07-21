@@ -8,7 +8,7 @@ void clear_info(info_t *info)
     info->argc = 0;
 }
 
-void set_info(flag info, char **av)
+void set_info(info_t *info, char **av)
 {
     int i = 0;
 
@@ -22,7 +22,7 @@ void set_info(flag info, char **av)
             if (info->argv)
             {
                 info->argv[0] = _strdup(info->arg);
-                info->argv[1] = NULL:
+                info->argv[1] = NULL;
             }
         }
         while(info->argv && info->argv[i])
@@ -35,13 +35,42 @@ void set_info(flag info, char **av)
     }
 }
 
-void free_info(flag *info, int free)
+int bfree(void **ptr)
+{
+	if (ptr && *ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+		return (1);
+	}
+	return (0);
+}
+
+void free_list(list_t **head_ptr)
+{
+	list_t *node, *next_node, *head;
+
+	if (!head_ptr || !*head_ptr)
+		return;
+	head = *head_ptr;
+	node = head;
+	while (node)
+	{
+		next_node = node->next;
+		free(node->str);
+		free(node);
+		node = next_node;
+	}
+	*head_ptr = NULL;
+}
+
+void free_info(info_t *info, int fr)
 {
     ffree(info->argv);
     info->argv = NULL;
     info->path = NULL;
 
-    if(node)
+    if(fr)
     {
         if(!info->cmd_buf)
             free(info->arg);
@@ -51,7 +80,7 @@ void free_info(flag *info, int free)
             info->environ = NULL;
         bfree((void **)info->cmd_buf);
         if(info->readfd > 2)
-            close(info->fileflag);
+            close(info->readfd);
         _eput(-1);
     }
 }

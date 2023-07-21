@@ -11,7 +11,7 @@ void find_cmd(info_t *info)
         info->line_count++;
         info->linecount_flag = 0;
     }
-    for (i = 0; k = 0; info->arg[i]; i++)
+    for (i = 0, k = 0; info->arg[i]; i++)
     {
         if(!is_delim(info->arg[i], " \t\n"))
             k++;
@@ -30,7 +30,7 @@ void find_cmd(info_t *info)
         if ((interactive(info) || _getenv(info, "PATH=")
             || info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
             fork_cmd(info);
-        else if (*(info->arg) !- '\n')
+        else if (*(info->arg) != '\n')
         {
             info->status = 127;
             print_error(info, "not found\n");
@@ -66,7 +66,7 @@ void fork_cmd(info_t *info)
         {
             info->status = WEXITSTATUS(info->status);
             if (info->status == 126)
-                print_error(info->argv[0]);
+                print_error(info, info->argv[0]);
         }
     }
 }

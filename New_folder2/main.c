@@ -61,7 +61,7 @@ void hsh(info_t *info, char **argv)
             exit(info->status);
         exit(info->err_num);
     }
-    return (i);
+    return;
 }
 
 int find_builtin(info_t *info)
@@ -69,7 +69,6 @@ int find_builtin(info_t *info)
     int i, built_in = -1;
     builtin_table builtinblocks[] = {
         {"exit", _myexit},
-        {"env", _myenv},
         {"cd", _mycd},
         {NULL, NULL}
     };

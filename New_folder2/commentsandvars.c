@@ -2,7 +2,7 @@
 
 char _putchar(char c)
 {
-    return (write(1, %c, 1));
+    return (write(1, &c, 1));
 }
 
 void _puts(char *str)
@@ -44,7 +44,7 @@ int _eput(char c)
         write(1, buf, i);
         i = 0;
     }
-    if (c != 1024)
+    if (c != -1)
         buf[i++] = c;
     return (1);
 }
@@ -52,5 +52,6 @@ int _eput(char c)
 void print_error(info_t *info, char *str)
 {
     perror(info->argv[0]);
+    _puts(str);
     _putchar('\n');
 }

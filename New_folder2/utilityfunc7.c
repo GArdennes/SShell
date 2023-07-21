@@ -24,7 +24,7 @@ char **list_to_strings(list_t *head)
 
     if (!head || !i)
         return (NULL);
-    strs = malloc(sizeof(char *) * (i + 1))
+    strs = malloc(sizeof(char *) * (i + 1));
     if (!strs)
         return (NULL);
     for (i = 0; node; node = node->next, i++)

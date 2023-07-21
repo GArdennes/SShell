@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <limits.h>
@@ -16,10 +17,15 @@
 #define USE_GETLINE 0
 #define USE_STRTOK 0
 
-#define INFO_INIT \
-{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, 0, 0, 0}
+#define CMD_NORM 0
+#define CMD_OR 1
+#define CMD_AND 2
+#define CMD_CHAIN 3
 
-extern char **environ
+#define INFO_INIT \
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, 0, 0, 0, NULL, 0}
+
+extern char **environ;
 
 typedef struct liststr
 {
@@ -43,6 +49,8 @@ typedef struct passinfo
     int env_changed;
     int status;
     int readfd;
+    char **cmd_buf;
+    int cmd_buf_type;
 } info_t;
 
 typedef struct builtin
@@ -51,7 +59,7 @@ typedef struct builtin
     int (*func)(info_t *);
 } builtin_table;
 
-int _putchar(char c);
+char _putchar(char c);
 void _puts(char *str);
 int _eputchar(char c);
 int _eput(char c);
@@ -66,7 +74,7 @@ int replace_string(char **old, char *new);
 int _strcmp(char *s1, char *s2);
 char *_strdup(const char *str);
 char *convert_number(long int num, int base, int flags);
-char *starts_with(consts char *haystack, const char *needle);
+char *starts_with(const char *haystack, const char *needle);
 char *_getenv(info_t *info, char *name);
 list_t *node_starts_with(list_t *node, char *prefix, char c);
 int replace_vars(info_t *info);
@@ -98,11 +106,13 @@ char *_memset(char *s, char b, unsigned int n);
 list_t *add_node(list_t **head, const char *str, int num);
 list_t *add_node_end(list_t **head, const char *str, int num);
 int _setenv(info_t *info, char *var, char *value);
-int hsh(info_t *, char **);
+void hsh(info_t *, char **);
 int _myexit(info_t *);
 int _mycd(info_t *);
 int is_chain(info_t *info, char *buf, size_t *p);
 void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len);
-
+void siginthandler(__attribute__((unused))int sig_num);
+void find_cmd(info_t *info);
+void fork_cmd(info_t *info);
 
 #endif
