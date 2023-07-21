@@ -13,6 +13,7 @@ int main(int argc, char **argv)
             if (errno == ENOENT)
             {
                 print_error(argv[0]);
+                _eputchar('\n');
                 exit(127);
             }
             if (errno == EACCES)
@@ -22,6 +23,7 @@ int main(int argc, char **argv)
         info->readfd = fd;
     }
     populate_env_list(info);
+    read_history(info);
     hsh(info, av);
     return (EXIT_SUCCESS);
 }
@@ -29,12 +31,12 @@ int main(int argc, char **argv)
 void hsh(info_t *info, char **argv)
 {
     int i = 0;
-    int user_input;
+    ssize_t user_input;
 
     while(user_input != -1 && i != -2)
     {
         clear_node(info);
-        if (isatty(STDIN_FILENO) && info->readfd <= 2)
+        if (interactive(info))
             _puts("$ ");
         _eputchar(-1);
         user_input = get_input(info);
@@ -45,12 +47,13 @@ void hsh(info_t *info, char **argv)
             if (i == -1)
                 find_cmd(info);
         }
-        else if (isatty(STDIN_FILENO) && info->readfd <= 2)
+        else if (interactive(info)) {
             _putchar('\n');
         free_info(info, 0);
     }
+    write_history(info);
     free_info(info, 1);
-    if (!(isatty(STDIN_FILENO) && info->readfd <= 2))
+    if (!interactive(info) && info->status)
         exit(info->status);
     if (i == -2)
     {
