@@ -1,34 +1,35 @@
 #include "shell.h"
 
-/**
+/*
  *_puts - prints string
  *@str: characters to check
  *Return: On success the string
- */
+ 
 void _puts(char *str)
 {
 int count = 0;
 
 if(str == NULL)
-return (NULL);
+return;
 
-while(str[i] != '\0')
+while(str[count] != '\0')
 {
-_putchar(str[i]);
-i++
+_putchar(str[count]);
+count++;
 }
 }
+*/
 
 /**
 *_putchar - prints single character
 *@ch: character to check
 *Return: On success the character
-*/
+
 char _putchar(char ch)
 {
 return (write(1,&ch,1));
 }
-
+*/
 
 /**
  *_memset - fill a block of memory with value
@@ -37,33 +38,29 @@ return (write(1,&ch,1));
  *@n: number to check
  *Return: On success memory allocation
  */
-char *_memset(char *s, char b, unsigned int n);
-{
 /*
+char *_memset(char *s, char b, unsigned int n)
+{
+
 char *buffer to create space
 find the length of the string 
 allocate memory with malloc
 create a loop to fill string with character
 for the number of integer value times
 return string
-*/
-int count, len;
-char *buffer;
 
-for (count = 0; s[count] != '\0'; count++)
-{
-;
-}
+char *string = s;
 
-buffer = malloc(count + n);
-for(len = 0; len < n; len++)
+while (n > 0)
 {
-*s = b;
-s++
+	*s = b;
+	s++;
+	n--;
 }
 
 return (string);
 }
+*/
 
 /**
  * _eatoi - function to convert exit code to integer
