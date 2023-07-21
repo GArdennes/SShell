@@ -25,7 +25,7 @@ void execute_commands(char **commands)
 	int i = 0;
 	char **args;
 
-	while (commands[i] != NULL)
+	if (commands[i] != NULL)
 	{
 		args = split_str(commands[i], " \t\n");
 		if (args[0] != NULL && args !=NULL)
@@ -42,7 +42,7 @@ void execute_commands(char **commands)
 				execute_command(args);
 		}
 		free(args);
-		i++;
+		/*i++;*/
 	}
 }
 
