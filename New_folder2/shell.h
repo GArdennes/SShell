@@ -114,5 +114,15 @@ void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len);
 void siginthandler(__attribute__((unused))int sig_num);
 void find_cmd(info_t *info);
 void fork_cmd(info_t *info);
+int write_history(info_t *info);
+int read_history(info_t *info);
+int build_history_list(info_t *info, char *buf, int linecount);
+int renumber_history(info_t *info);
+char *get_history_file(info_t *info);
+int _putsfd(char *str, int fd);
+int _putfd(char c, int fd);
+int delete_node_at_index(list_t **head, unsigned int index);
+
+
 
 #endif

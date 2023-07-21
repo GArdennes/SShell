@@ -18,8 +18,15 @@ void exit_shell(char **args)
 {
 	int i;
 
-	for (i = 0; args[i] != NULL; i++)
-		free(args[i]);
-	free(args);
-	exit(EXIT_SUCCESS);
+	if (args[1] != NULL)
+	{
+		i = _eatoi(args[1]);
+		if (i == -1)
+		{
+			free(args);
+			exit(EXIT_FAILURE);
+		}
+		free(args);
+		exit(i);
+	}
 }

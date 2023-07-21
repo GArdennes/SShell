@@ -45,6 +45,7 @@ int _setenv(char *name, char *value);
 void _puts(char *str);
 char _putchar(char ch);
 char *_memset(char *s, char b, unsigned int n);
+int _eatoi(char *s);
 
 
 #endif

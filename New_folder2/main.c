@@ -23,7 +23,7 @@ int main(int argc, char **argv)
         info->readfd = fd;
     }
     populate_env_list(info);
-    read_history(info);
+    /*read_history(info);*/
     hsh(info, av);
     return (EXIT_SUCCESS);
 }
@@ -40,6 +40,9 @@ void hsh(info_t *info, char **argv)
             _puts("$ ");
         _eputchar(-1);
         user_input = get_input(info);
+        _putchar('\n');
+        _puts("getline works");
+        _putchar('\n');
         if (user_input != -1)
         {
             set_info(info, argv);
@@ -47,11 +50,11 @@ void hsh(info_t *info, char **argv)
             if (i == -1)
                 find_cmd(info);
         }
-        else if (interactive(info)) {
+        else if (interactive(info))
             _putchar('\n');
         free_info(info, 0);
     }
-    write_history(info);
+    /*write_history(info);*/
     free_info(info, 1);
     if (!interactive(info) && info->status)
         exit(info->status);
