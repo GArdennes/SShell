@@ -16,6 +16,8 @@
 
 extern char **environ;
 
+int exit_status = 0;
+
 char **split_str(char *input, char *delim);
 char *find_path(char **command);
 char *_strdup(char *str);

@@ -46,7 +46,6 @@ void execute_commands(char **commands)
 				execute_command(args);
 		}
 		free(args);
-		/*i++;*/
 	}
 }
 
@@ -78,6 +77,7 @@ void execute_command(char **command)
 		}
 		if (execve(*command, command, environ) == -1)
 			perror(command[0]);
+		exit_status = 1;
 		exit(EXIT_FAILURE);
 	}
 	else

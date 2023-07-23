@@ -14,6 +14,7 @@ void printecho(char **cmd)
 	{
 		if (execve("/bin/echo", cmd, environ) == -1)
 			return;
+		exit_status = 1;
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -26,21 +27,25 @@ void printecho(char **cmd)
 
 void echo_func(char **cmd)
 {
-	char *path;
-	unsigned int pid = getppid();
+	char *path, *env_var;
+	unsigned int pid = getpid();
 
 	if (cmd[1] != NULL)
 	{
 		if (_strncmp(cmd[1], "$?", 2) == 0)
 		{
-			write(STDOUT_FILENO, "0", 1);
+			_puts(exit_status);
 			write(STDOUT_FILENO, "\n", 1);
 		}
 		else if (_strncmp(cmd[1], "$$", 2) == 0)
-			print_number((unsigned int)pid);
-		else if (_strncmp(cmd[1], "$PATH", 5) == 0)
 		{
-			path = _getenv("PATH");
+			print_number((unsigned int)pid);
+			write(STDOUT_FILENO, "\n", 1);
+		}
+		else if ((cmd[1][0] == "$") && (cmd[1] + 1 != NULL))
+		{
+			env_var = cmd[1] + 1;
+			path = _getenv(env_var);
 			write(STDOUT_FILENO, path, _strlen(path));
 			write(STDOUT_FILENO, "\n", 1);
 		}
