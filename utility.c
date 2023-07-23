@@ -110,7 +110,9 @@ new_environ[i] = environ[i];
 new_environ[env_size] = new_entry;
 new_environ[env_size + 1] = NULL;
 
-free(environ);
+if (new_environ != NULL)
+    free(new_environ);
+
 environ = new_environ;
 
 return (0);
@@ -125,7 +127,7 @@ void _mysetenv(char **args)
 {
     if (args[2] == NULL)
     {
-        perror("setenv");
+        _puts("setenv error");
         return;
     }
     if (_setenv(args[1], args[2]))
