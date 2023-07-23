@@ -66,10 +66,16 @@ entry_len = nlen + vlen + 2;
 new_entry = (char *)malloc(entry_len);
 if (new_entry == NULL)
 return (-1);
+/*
 _memcpy(new_entry, name, nlen);
 new_entry[nlen] = '=';
 _memcpy(new_entry + nlen + 1, value, vlen);
 new_entry[entry_len - 1] = '\0';
+*/
+_strcpy(new_entry, name);
+_strcat(new_entry, "=");
+_strcat(new_entry, value);
+
 
 free(environ[i]);
 environ[i] = new_entry;
@@ -81,10 +87,15 @@ entry_len = nlen + vlen + 2;
 new_entry = (char *)malloc(entry_len);
 if (new_entry == NULL)
 return (-1);
+/*
 memcpy(new_entry, name, nlen);
 new_entry[nlen] = '=';
 memcpy(new_entry + nlen + 1, value, vlen);
 new_entry[entry_len - 1] = '\0';
+*/
+_strcpy(new_entry, name);
+_strcat(new_entry, "=");
+_strcat(new_entry, value);
 
 new_environ = (char **)malloc((env_size + 2) * sizeof(char *));
 if (new_environ == NULL)
