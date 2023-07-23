@@ -46,6 +46,8 @@ void _puts(char *str);
 char _putchar(char ch);
 char *_memset(char *s, char b, unsigned int n);
 int _eatoi(char *s);
+void _mysetenv(char **str);
+void _myunsetenv(char **str);
 
 
 #endif

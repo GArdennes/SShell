@@ -38,6 +38,10 @@ void execute_commands(char **commands)
 				exit_shell(args);
 			else if (_strcmp(args[0], "env") == 0)
 				printenv();
+			else if (_strcmp(args[0], "setenv") == 0)
+				_mysetenv(args);
+			else if (_strcmp(args[0], "unsetenv") == 0)
+				_myunsetenv(args);
 			else
 				execute_command(args);
 		}

@@ -104,3 +104,30 @@ environ = new_environ;
 
 return (0);
 }
+
+/**
+ * _mysetenv - set the environment
+ * @args: Arguments to check
+ * Return: On success call another function
+ */
+void _mysetenv(char **args)
+{
+    if (args[2] == NULL)
+    {
+        perror("setenv");
+        return;
+    }
+    if (_setenv(args[1], args[2]))
+        return;
+}
+
+void _myunsetenv(char **args)
+{
+    if (args[1] == NULL)
+    {
+        perror("unsetenv");
+        return;
+    }
+    if (_unsetenv(args[1]))
+        return;
+}
