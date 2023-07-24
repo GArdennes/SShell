@@ -2,9 +2,9 @@
 
 /**
  * _strcat - duplicate of strcat
- * @dest: string to check 
- * @src: string to check 
- * Return: char* 
+ * @dest: string to check
+ * @src: string to check
+ * Return: char*
  */
 char *_strcat(char *dest, char *src)
 {
@@ -22,8 +22,8 @@ char *_strcat(char *dest, char *src)
 
 /**
  * _strlen - duplicate of strlen
- * @str: string to check 
- * Return: size_t 
+ * @str: string to check
+ * Return: size_t
  */
 size_t _strlen(char *str)
 {
@@ -36,9 +36,9 @@ size_t _strlen(char *str)
 
 /**
  * _strcpy - duplicate of strcpy
- * @dest: string to check 
- * @src: string to check 
- * Return: char* 
+ * @dest: string to check
+ * @src: string to check
+ * Return: char*
  */
 char *_strcpy(char *dest, char *src)
 {
@@ -56,9 +56,9 @@ char *_strcpy(char *dest, char *src)
 
 /**
  * _strcmp - duplicate of strcmp
- * @s1: string to check 
- * @s2: string to check 
- * Return: int 
+ * @s1: string to check
+ * @s2: string to check
+ * Return: int
  */
 int _strcmp(char *s1, char *s2)
 {
@@ -75,10 +75,10 @@ int _strcmp(char *s1, char *s2)
 
 /**
  * _strncmp - duplicate of strncmp
- * @s1: string to check 
- * @s2: string to check 
- * @len: length of string 
- * Return: int 
+ * @s1: string to check
+ * @s2: string to check
+ * @len: length of string
+ * Return: int
  */
 int _strncmp(char *s1, const char *s2, size_t len)
 {
@@ -90,3 +90,4 @@ int _strncmp(char *s1, const char *s2, size_t len)
 		return (0);
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
+

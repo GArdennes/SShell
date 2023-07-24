@@ -18,8 +18,8 @@ void printenv(void)
 
 /**
  * _getenv - duplicate of getenv
- * @name: string to check 
- * Return: char* 
+ * @name: string to check
+ * Return: char*
  */
 char *_getenv(char *name)
 {
@@ -51,7 +51,7 @@ char *_getenv(char *name)
 
 /**
  * exit_shell - duplicate of exit
- * @args: string to check 
+ * @args: string to check
  */
 void exit_shell(char **args)
 {
@@ -61,3 +61,4 @@ void exit_shell(char **args)
 		exit(EXIT_SUCCESS);
 	}
 }
+

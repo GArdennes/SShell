@@ -82,9 +82,7 @@ int main(void)
         }
 
         if (feof(stdin))
-        {
             exit(EXIT_SUCCESS);
-        }
 
         args = parse_input(input);
 
@@ -109,12 +107,10 @@ int main(void)
             if (execve(checked, args, NULL) == -1) {
                 perror("shell");
             }
-        } else {
+        } else
             wait(&status);
-        }
         free(checked);
         free(args);
     }
-
     return 0;
 }
