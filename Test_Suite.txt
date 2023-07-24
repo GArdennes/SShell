@@ -1,3 +1,5 @@
+You have to handle the “end of file” condition (Ctrl+D)
+
 3. SIMPLE SHELL 0.3
 Write a shell program that handles 'PATH', 'fork' must not be called if the command doesn't exist.
 

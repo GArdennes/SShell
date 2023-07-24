@@ -61,6 +61,17 @@ return (NULL);
 }
 
 /**
+ * print_error_message - print an error message
+ * @args: string to check
+ * 
+ */
+void print_error_message(char *args)
+{
+perror(args);
+exit(EXIT_FAILURE);
+}
+
+/**
  * main - main entry point of function
  * Return: On success integer value
  */
@@ -76,43 +87,26 @@ while (1)
 {
 write(STDOUT_FILENO, "$ ", 2);
 read = getline(&input, &len, stdin);
-
-if (read == -1)
-{
-perror("shell");
-exit(EXIT_FAILURE);
-}
-
-if (feof(stdin))
-exit(EXIT_SUCCESS);
-
+if (read == -1 || feof(stdin))
+print_error_message("shell");
 args = parse_input(input);
-
 if (_strcmp(args[0], "env") == 0)
 printenv();
 else if (_strcmp(args[0], "exit") == 0)
 exit_shell(args);
-
 checked = comparewithpath(args[0]);
-
 if (checked == NULL)
 {
 perror("shell");
 free(args);
 }
-
 pid = fork();
 if (pid == -1)
-{
-perror("fork");
-exit(EXIT_FAILURE);
-}
+print_error_message("fork");
 else if (pid == 0)
 {
 if (execve(checked, args, NULL) == -1)
-{
-perror("shell");
-}
+print_error_message("shell");
 }
 else
 wait(&status);
