@@ -80,13 +80,13 @@ int _strcmp(char *s1, char *s2)
  * @len: length of string
  * Return: int
  */
-int _strncmp(char *s1, const char *s2, size_t len)
+int _strncmp(char *s1, char *s2, size_t len)
 {
 	size_t i;
 
-	for (i = 0; i < n && s1[i] == s2[i] && s1[i] != '\0'; i++)
+	for (i = 0; i < len && s1[i] == s2[i] && s1[i] != '\0'; i++)
 		;
-	if (i == n)
+	if (i == len)
 		return (0);
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
