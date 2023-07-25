@@ -84,7 +84,10 @@ int status;
 
 while (1)
 {
-write(STDOUT_FILENO, "$ ", 2);
+/*1 interactive, puts and eputchar*/
+if (interactive())
+_putstr("$ ");
+_eputchar(-1);
 read = getline(&input, &len, stdin);
 if (read == -1 || feof(stdin))
 print_error_message("shell");
@@ -112,6 +115,8 @@ wait(&status);
 free(checked);
 free(args);
 }
+if (!interactive())
+exit(0);
 return (0);
 }
 

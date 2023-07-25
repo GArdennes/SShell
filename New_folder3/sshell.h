@@ -19,5 +19,9 @@ size_t _strlen(char *str);
 int _strncmp(char *s1, char *s2, size_t len);
 void printenv(void);
 void exit_shell(char **);
+int _eputchar(char c);
+void _putstr(char *c);
+int _putchar(char c);
+int interactive(void);
 
 #endif 
