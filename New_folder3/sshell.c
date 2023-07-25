@@ -63,7 +63,6 @@ return (NULL);
 /**
  * print_error_message - print an error message
  * @args: string to check
- * 
  */
 void print_error_message(char *args)
 {
