@@ -16,8 +16,8 @@ int hsh(info_t *info, char **av)
 	{
 		clear_info(info);
 		if (interactive(info))
-			_puts("$ "); //print shell prompt
-		_eputchar(BUF_FLUSH); //consider as _putchar
+			_puts("$ ");
+		_eputchar(BUF_FLUSH);
 		r = get_input(info);
 		if (r != -1)
 		{
