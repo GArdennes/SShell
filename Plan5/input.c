@@ -73,7 +73,7 @@ int is_cmd(char *pp)
 {
 	struct stat st;
 
-	if (pp == NULL || stat(path, &st))
+	if (pp == NULL || stat(pp, &st))
 		return (0);
 
 	if (st.st_mode & S_IFREG)
