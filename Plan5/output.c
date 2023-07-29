@@ -1,14 +1,14 @@
 #include "sshell.h"
 
-void write_to_buffer(char c, int i, char *buf)
+void write_to_buffer(char c, int *i, char *buf)
 {
-	if (i >= MAX_ARGS)
+	if (*i >= MAX_ARGS)
 	{
-		write(1, buf, i);
-		i = 0;
+		write(1, buf, *i);
+		*i = 0;
 	}
 
-	buf[i++] = c;
+	buf[(*i)++] = c;
 }
 
 void _flush_buffer(int i, char *buf)
@@ -16,7 +16,6 @@ void _flush_buffer(int i, char *buf)
 	if (i > 0)
 	{
 		write(1, buf, i);
-		i = 0;
 	}
 }
 
@@ -26,9 +25,13 @@ int _putchar(char c)
 	static char buf[MAX_ARGS];
 
 	if (c != -1)
-		write_to_buffer(c, i, buf);
+		write_to_buffer(c, &i, buf);
 	else
+	{
 		_flush_buffer(i, buf);
+		i = 0;
+	}
+
 	return (0);
 }
 
