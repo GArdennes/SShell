@@ -35,7 +35,7 @@ void ffree(char **str)
 {
     char **a = str;
 
-    if (str != NULL)
+    if (str == NULL)
         return;
     
     while (*str != NULL)

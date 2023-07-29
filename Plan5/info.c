@@ -39,8 +39,6 @@ void free_info(int all)
 
 	if (all)
 	{
-		/*ffree(new_environ);*/
-	/*	new_environ = NULL;*/
 		_putchar(-1);
 	}
 }
