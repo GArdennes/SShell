@@ -7,7 +7,7 @@ int interactive(void)
 
 int _putchar(char c)
 {
-    static int check;
+    static int i;
     static char buffer[1024];
 
     if (c == -1 || i >= 1024)
@@ -24,11 +24,11 @@ void _putstr(char *c)
 {
     int i = 0;
 
-    if (str == NULL)
+    if (c == NULL)
         return;
-    while (str[i] != '\0')
+    while (c[i] != '\0')
     {
-        _putchar(str[i]);
+        _putchar(c[i]);
         i++;
     }
 }
