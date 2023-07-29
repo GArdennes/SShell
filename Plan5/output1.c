@@ -45,7 +45,7 @@ return;
 while (str[j] != '\0')
 {
 _eputchar(str[j]);
-i++;
+j++;
 }
 }
 
