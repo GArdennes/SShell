@@ -7,24 +7,6 @@
  */
 char **parse_input(char *input)
 {
-int i = 0;
-char **args = malloc(sizeof(char *) * MAX_INPUT_LENGTH);
-char *token;
-
-if (args == NULL)
-{
-perror("shell");
-exit(EXIT_FAILURE);
-}
-
-token = strtok(input, " \n");
-while (token != NULL)
-{
-args[i] = token;
-i++;
-token = strtok(NULL, " \n");
-}
-args[i] = NULL;
 
 return (args);
 }
@@ -36,28 +18,7 @@ return (args);
  */
 char *comparewithpath(char *args)
 {
-char *path = _getenv("PATH");
-char *command_path = malloc(MAX_INPUT_LENGTH);
-char *dir = strtok(path, ":");
 
-if (!command_path)
-{
-perror("malloc error");
-exit(EXIT_FAILURE);
-}
-
-while (dir != NULL)
-{
-_strcpy(command_path, dir);
-_strcat(command_path, "/");
-_strcat(command_path, args);
-if (access(command_path, X_OK) == 0)
-return (command_path);
-dir = strtok(NULL, ":");
-}
-
-free(command_path);
-return (NULL);
 }
 
 /**
@@ -76,47 +37,11 @@ exit(EXIT_FAILURE);
  */
 int main(void)
 {
-char *input = NULL, **args, *checked = NULL;
-size_t len = 0;
-ssize_t read;
-pid_t pid;
-int status;
+
 
 while (1)
 {
-/*1 interactive, puts and eputchar*/
-if (interactive())
-_putstr("$ ");
-_eputchar(-1);
-read = getline(&input, &len, stdin);
-if (read == -1 || feof(stdin))
-print_error_message("shell");
-args = parse_input(input);
-if (_strcmp(args[0], "env") == 0)
-printenv();
-else if (_strcmp(args[0], "exit") == 0)
-exit_shell(args);
-checked = comparewithpath(args[0]);
-if (checked == NULL)
-{
-perror("shell");
-free(args);
+
 }
-pid = fork();
-if (pid == -1)
-print_error_message("fork");
-else if (pid == 0)
-{
-if (execve(checked, args, NULL) == -1)
-print_error_message("shell");
-}
-else
-wait(&status);
-free(checked);
-free(args);
-}
-if (!interactive())
-exit(0);
-return (0);
 }
 

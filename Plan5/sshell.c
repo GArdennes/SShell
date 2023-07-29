@@ -7,12 +7,8 @@
  *
  * Return: 0 on success, 1 on error
  */
-int main(__attribute__((unused))int argc, char **argv)
+int main(__attribute__((unused))int ac, char **av)
 {
-	info_t info[] = { INFO_INIT };
-	
-	populate_env_list(info);
-
-	shell(info, argv);
+	hsh(av);
 	return (EXIT_SUCCESS);
 }
