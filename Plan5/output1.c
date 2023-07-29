@@ -1,46 +1,48 @@
 #include "sshell.h"
 
-static int j;
-static int char buf[MAX_ARGS];
-
-void ewrite_to_buffer(char c)
+void ewrite_to_buffer(char c, int j, char *buf)
 {
-    if (j >= MAX_ARGS)
-    {
-        write(1, buf, j);
-        j = 0;
-    }
-
-    buf[j++] = c;
+if (j >= MAX_ARGS)
+{
+write(1, buf, j);
+j = 0;
 }
 
-void eflush_buffer(void)
+buf[j++] = c;
+}
+
+void eflush_buffer(int j, char *buf)
 {
-    if (j > 0)
-    {
-        write(2, buf, j);
-        j = 0;
-    }
+if (j > 0)
+{
+write(2, buf, j);
+j = 0;
+}
 }
 
 int _eputchar(char c)
 {
-    if (c != -1)
-        ewrite_to_buffer(c);
-    else
-        eflush_buffer();
+static int j;
+static char buf[MAX_ARGS];
+
+if (c != -1)
+ewrite_to_buffer(c, j, buf);
+else
+eflush_buffer(j, buf);
+
+return (0);
 }
 
 void _eputs(char *str)
 {
-	int i = 0;
+int i = 0;
 
-	if (str == NULL)
-		return;
-	while (str[i] != '\0')
-	{
-		_eputchar(str[i]);
-		i++;
-	}
+if (str == NULL)
+return;
+while (str[i] != '\0')
+{
+_eputchar(str[i]);
+i++;
+}
 }
 

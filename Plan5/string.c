@@ -3,12 +3,13 @@
 char *_strdup(char *str)
 {
     size_t length, index;
-    char *ret = malloc(length + 1);
+    char *ret;
     
     if (str == NULL)
         return (NULL);
 
     length = _strlen(str);
+    ret = malloc(length + 1);
 
     if (ret == NULL)
         return (NULL);
@@ -78,7 +79,7 @@ void split_string(char *str, char *d, char **result)
     result[j] = NULL;
 }
 
-char **strtow(char *str, char *d)
+char **_strtow(char *str, char *d)
 {
     char **result;
     int numwords;

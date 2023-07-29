@@ -3,8 +3,10 @@
 int is_delim(char c, char *delim)
 {
 	while (*delim)
+	{
 		if (*delim++ == c)
 			return (1);
+	}
 	return (0);
 }
 
@@ -42,7 +44,7 @@ ssize_t get_input(void)
 	char **buf_p = &(arg), *p;
 
 	_putchar(-1);
-	r = input_buf(info, &buf, &len);
+	r = input_buf(&buf, &len);
 	if (r == -1) /* EOF */
 		return (-1);
 	if (len)

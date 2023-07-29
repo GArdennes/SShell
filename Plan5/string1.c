@@ -2,8 +2,8 @@
 
 int replace_string(char **src, char *dest)
 {
-    free(*old);
-    *old = new;
+    free(*src);
+    *src = dest;
     return (1);
 }
 

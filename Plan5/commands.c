@@ -43,7 +43,7 @@ void fork_cmd(void)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
-		perror("Error:")
+		perror("Error:");
 		return;
 	}
 

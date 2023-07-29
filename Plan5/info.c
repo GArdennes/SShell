@@ -4,7 +4,7 @@ void clear_info(void)
 {
 	arg = NULL;
 	argv = NULL;
-	pp = NULL;
+	path = NULL;
 	argc = 0;
 }
 
@@ -15,7 +15,7 @@ void set_info(char **av)
 	fname = av[0];
 	if (arg)
 	{
-		argv = strtow(arg, " \t");
+		argv = _strtow(arg, " \t");
 		if (argv == NULL)
 		{
 			argv = malloc(sizeof(char *) * 2);
@@ -35,14 +35,12 @@ void free_info(int all)
 {
 	ffree(argv);
 	argv = NULL;
-	pp = NULL;
+	path = NULL;
 
 	if (all)
 	{
-		ffree(new_environ);
-		new_environ = NULL;
-		if (readfd > 2)
-			close(readfd);
+		/*ffree(new_environ);*/
+	/*	new_environ = NULL;*/
 		_putchar(-1);
 	}
 }
