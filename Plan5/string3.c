@@ -19,7 +19,7 @@ char *_strcat(char *dest, char *src)
 
     *ptr = '\0';
 
-    return (ptr);
+    return (dest);
 }
 
 char *_strcpy(char *dest, char *src)
