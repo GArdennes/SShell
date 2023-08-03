@@ -67,11 +67,15 @@ char *find_path(char *str, char *cmd)
 				_strcat(pp, "/");
 				_strcat(pp, cmd);
 			}
+			/*printf("Trying path: %s\n", pp);*/
 			if (is_cmd(pp))
+			{
+				/*printf("found executatble path: %s\n", pp);*/
 				return (pp);
+			}
 			if (!str[i])
 				break;
-			curr_pos = i;
+			curr_pos = i + 1;
 		}
 		i++;
 	}
