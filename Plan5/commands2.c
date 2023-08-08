@@ -62,5 +62,11 @@ int hsh(char **av)
 	free_info(1);
 	if (!interactive() && status)
 		exit(status);
-	return (0);
+	if (check == -2)
+    {
+        if (err_num == -1)
+            exit(status);
+        exit(err_num);
+    }
+	return (check);
 }

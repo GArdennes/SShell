@@ -12,13 +12,6 @@ int execute_cmds(void)
             check = exit_shell();
     }
 
-    if (check == -2)
-    {
-        if (err_num == -1)
-            exit(status);
-        exit(err_num);
-    }
-
     return (check);
 }
 
