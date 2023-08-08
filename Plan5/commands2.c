@@ -53,7 +53,7 @@ int hsh(char **av)
 			set_info(av);
 			check = execute_cmds();
 			if (check == -1)
-				find_cmds();
+				find_cmd();
 		}
 		else if (interactive())
 			_putchar('\n');
