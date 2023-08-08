@@ -26,6 +26,7 @@ char **argv;
 char *path;
 int argc;
 int status;
+int err_num;
 
 int _putchar(char c);
 void _puts(char *str);
@@ -63,5 +64,11 @@ void find_cmd(void);
 int hsh(char **av);
 void sigintHandler(int sig_num);
 int print_d(int input, int fd);
+
+/*functions for builtin commands*/
+int execute_cmds(void);
+int printenv(void);
+int _erratoi(char *s);
+int exit_shell(void);
 
 #endif

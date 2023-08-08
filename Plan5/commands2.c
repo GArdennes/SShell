@@ -39,6 +39,7 @@ void find_cmd(void)
 int hsh(char **av)
 {
 	ssize_t r = 0;
+	int check = 0;
 
 	while (r != -1)
 	{
@@ -50,7 +51,9 @@ int hsh(char **av)
 		if (r != -1)
 		{
 			set_info(av);
-			find_cmd();
+			check = execute_cmds();
+			if (check == -1)
+				find_cmds();
 		}
 		else if (interactive())
 			_putchar('\n');
