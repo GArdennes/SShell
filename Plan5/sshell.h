@@ -70,5 +70,9 @@ int execute_cmds(void);
 int printenv(void);
 int _erratoi(char *s);
 int exit_shell(void);
+int _cd(void);
+int echo_func(void);
+int _mysetenv(void);
+int _myunsetenv(void);
 
 #endif

@@ -6,6 +6,7 @@ void clear_info(void)
 	argv = NULL;
 	path = NULL;
 	argc = 0;
+	line_count = 0;
 }
 
 void set_info(char **av)

@@ -12,6 +12,12 @@ void find_cmd(void)
 
 	path = argv[0];
 
+	if (linecount_flag == 1)
+	{
+		line_count++;
+		linecount_flag = 0;
+	}
+
 	for (i = 0, k = 0; arg[i]; i++)
 		if (!is_delim(arg[i], " \t\n"))
 			k++;
