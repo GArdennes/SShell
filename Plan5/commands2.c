@@ -47,7 +47,7 @@ int hsh(char **av)
 	ssize_t r = 0;
 	int check = 0;
 
-	while (r != -1)
+	while (r != -1 && check != -2)
 	{
 		clear_info();
 		if (interactive())
