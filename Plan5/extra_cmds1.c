@@ -107,10 +107,10 @@ int _myunsetenv(void)
 {
     int i;
 
-    if (args[1] == NULL)
+    if (argv[1] == NULL)
     {
         _eputs("unsetenv error");
-        return;
+        return (1);
     }
     for (i = 1; i <= argc; i++)
     {
