@@ -2,9 +2,9 @@
 
 /**
  * write_to_buffer - write a string to the buffer
- * @c: the character to write 
- * @i: the index of the character 
- * @buf: the buffer to write 
+ * @c: the character to write
+ * @i: the index of the character
+ * @buf: the buffer to write
  */
 void write_to_buffer(char c, int *i, char *buf)
 {
@@ -18,9 +18,9 @@ void write_to_buffer(char c, int *i, char *buf)
 }
 
 /**
- * _flush_buffer - flush the buffer 
- * @i: the index of the buffer to flush 
- * @buf: the buffer to flush 
+ * _flush_buffer - flush the buffer
+ * @i: the index of the buffer to flush
+ * @buf: the buffer to flush
  */
 void _flush_buffer(int i, char *buf)
 {
@@ -32,12 +32,12 @@ void _flush_buffer(int i, char *buf)
 
 /**
  * _putchar - put a character
- * @c: the character 
- * Return: On success int 
+ * @c: the character
+ * Return: On success int
  */
 int _putchar(char c)
 {
-	static int i = 0;
+	static int i;
 	static char buf[MAX_ARGS];
 
 	if (c != -1)
@@ -53,7 +53,7 @@ int _putchar(char c)
 
 /**
  * _puts - prints the given string
- * @str: the string to print 
+ * @str: the string to print
  */
 void _puts(char *str)
 {
@@ -70,7 +70,7 @@ void _puts(char *str)
 
 /**
  * print_error - print an error message
- * @str: the string to print 
+ * @str: the string to print
  */
 void print_error(char *str)
 {

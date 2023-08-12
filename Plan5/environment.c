@@ -1,9 +1,9 @@
 #include "sshell.h"
 
 /**
- * _getenv - get the environment variable 
- * @name: the name of the variable 
- * Return: On success char* 
+ * _getenv - get the environment variable
+ * @name: the name of the variable
+ * Return: On success char*
  */
 char *_getenv(char *name)
 {
@@ -34,11 +34,11 @@ char *_getenv(char *name)
 }
 
 /**
- * _memset - set value of memory * 
- * @s: pointer to memory 
- * @b: pointer to character 
- * @n: number of bytes to set 
- * Return: On success char* 
+ * _memset - set value of memory
+ * @s: pointer to memory
+ * @b: pointer to character
+ * @n: number of bytes to set
+ * Return: On success char*
  */
 char *_memset(char *s, char b, unsigned int n)
 {

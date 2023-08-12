@@ -2,9 +2,9 @@
 
 /**
  * is_delim - function to check if a string is a delimiter
- * @c: the character to check 
- * @delim: the string to check 
- * Return: On success int 
+ * @c: the character to check
+ * @delim: the string to check
+ * Return: On success int
  */
 int is_delim(char c, char *delim)
 {
@@ -17,10 +17,10 @@ int is_delim(char c, char *delim)
 }
 
 /**
- * input_buf - function to read input 
- * @buf: input buffer 
- * @len: length of input buffer 
- * Return: On success ssize_t 
+ * input_buf - function to read input
+ * @buf: input buffer
+ * @len: length of input buffer
+ * Return: On success ssize_t
  */
 ssize_t input_buf(char **buf, size_t *len)
 {
@@ -51,11 +51,11 @@ ssize_t input_buf(char **buf, size_t *len)
 
 /**
  * get_input - get input from commandline
- * Return: On success ssize_t 
+ * Return: On success ssize_t
  */
 ssize_t get_input(void)
 {
-	static char *buf; 
+	static char *buf;
 	static size_t i, j, len;
 	ssize_t r = 0;
 	char **buf_p = &(arg), *p;
@@ -66,19 +66,16 @@ ssize_t get_input(void)
 		return (-1);
 	if (len)
 	{
-		j = i; 
+		j = i;
 		p = buf + i;
-
-        while (j < len && buf[j] != ';')
-            j++;
-
+		while (j < len && buf[j] != ';')
+			j++;
 		i = j + 1;
 		if (i >= len)
 		{
 			i = len = 0;
 		}
-
-		*buf_p = p; 
+		*buf_p = p;
 		return (_strlen(p));
 	}
 
@@ -88,8 +85,8 @@ ssize_t get_input(void)
 
 /**
  * is_cmd - returns true if the command is a command
- * @pp: command string 
- * Return: On success int 
+ * @pp: command string
+ * Return: On success int
  */
 int is_cmd(char *pp)
 {
@@ -102,7 +99,4 @@ int is_cmd(char *pp)
 		return (1);
 	return (0);
 }
-
-
-
 

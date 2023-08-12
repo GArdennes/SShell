@@ -1,7 +1,7 @@
 #include "sshell.h"
 
 /**
- * clear_info - clear all information * 
+ * clear_info - clear all information
  */
 void clear_info(void)
 {
@@ -13,8 +13,8 @@ void clear_info(void)
 }
 
 /**
- * set_info - set information * 
- * @av: the argument 
+ * set_info - set information
+ * @av: the argument
  */
 void set_info(char **av)
 {
@@ -56,10 +56,10 @@ void free_info(int all)
 }
 
 /**
- * find_path - find the path to the directory * 
- * @str: the path to search 
- * @cmd: the command to execute 
- * Return: On success char* 
+ * find_path - find the path to the directory
+ * @str: the path to search
+ * @cmd: the command to execute
+ * Return: On success char*
  */
 char *find_path(char *str, char *cmd)
 {

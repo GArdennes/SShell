@@ -1,8 +1,8 @@
 #include "sshell.h"
 
 /**
- * interactive - command * 
- * Return: On success int 
+ * interactive - command
+ * Return: On success int
  */
 int interactive(void)
 {
@@ -10,7 +10,7 @@ int interactive(void)
 }
 
 /**
- * find_cmd - command 
+ * find_cmd - command
  */
 void find_cmd(void)
 {
@@ -50,9 +50,9 @@ void find_cmd(void)
 }
 
 /**
- * hsh - main shell loop 
- * @av: commands 
- * Return: On success int 
+ * hsh - main shell loop
+ * @av: commands
+ * Return: On success int
  */
 int hsh(char **av)
 {
@@ -81,10 +81,10 @@ int hsh(char **av)
 	if (!interactive() && status)
 		exit(status);
 	if (check == -2)
-    {
-        if (err_num == -1)
-            exit(status);
-        exit(err_num);
-    }
+	{
+		if (err_num == -1)
+			exit(status);
+		exit(err_num);
+	}
 	return (check);
 }

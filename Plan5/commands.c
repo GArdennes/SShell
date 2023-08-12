@@ -2,9 +2,9 @@
 
 /**
  * starts_with - starts with function
- * @s1: string to check 
- * @s2: string to check 
- * Return: On success char* 
+ * @s1: string to check
+ * @s2: string to check
+ * Return: On success char*
  */
 char *starts_with(const char *s1, const char *s2)
 {
@@ -18,7 +18,7 @@ char *starts_with(const char *s1, const char *s2)
 
 /**
  * wait_for_child - function to wait for child process
- * @status: status of child process 
+ * @status: status of child process
  */
 void wait_for_child(int *status)
 {
@@ -27,7 +27,7 @@ void wait_for_child(int *status)
 
 /**
  * handle_child_status - handle child status
- * @status: status of child process 
+ * @status: status of child process
  */
 void handle_child_status(int status)
 {
@@ -40,7 +40,7 @@ void handle_child_status(int status)
 }
 
 /**
- * execute_cmd - execute command 
+ * execute_cmd - execute command
  */
 void execute_cmd(void)
 {
@@ -54,7 +54,7 @@ void execute_cmd(void)
 }
 
 /**
- * fork_cmd - fork a command 
+ * fork_cmd - fork a command
  */
 void fork_cmd(void)
 {

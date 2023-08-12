@@ -79,7 +79,7 @@ new_environ[env_size] = new_entry;
 new_environ[env_size + 1] = NULL;
 
 if (new_environ != NULL)
-    free(new_environ);
+free(new_environ);
 
 environ = new_environ;
 
@@ -92,32 +92,32 @@ return (0);
  */
 int _mysetenv(void)
 {
-    if (argv[2] == NULL)
-    {
-        _eputs("setenv error");
-        return (1);
-    }
-    if (_setenv(argv[1], argv[2]))
-        return (0);
-    return (1);
+if (argv[2] == NULL)
+{
+_eputs("setenv error");
+return (1);
+}
+if (_setenv(argv[1], argv[2]))
+return (0);
+return (1);
 }
 
 /**
- * _myunsetenv - unset the environment variable * 
- * Return: On success int 
+ * _myunsetenv - unset the environment variable
+ * Return: On success int
  */
 int _myunsetenv(void)
 {
-    int i;
+int i;
 
-    if (argv[1] == NULL)
-    {
-        _eputs("unsetenv error");
-        return (1);
-    }
-    for (i = 1; i <= argc; i++)
-    {
-        _unsetenv(argv[i]);
-    }
-    return (0);
+if (argv[1] == NULL)
+{
+_eputs("unsetenv error");
+return (1);
+}
+for (i = 1; i <= argc; i++)
+{
+_unsetenv(argv[i]);
+}
+return (0);
 }
