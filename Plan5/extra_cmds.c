@@ -1,5 +1,9 @@
 #include "sshell.h"
 
+/**
+ * execute_cmds - execute built-in commands
+ * Return: On success int 
+ */
 int execute_cmds(void)
 {
     int check = -1;
@@ -36,6 +40,10 @@ int execute_cmds(void)
     return (check);
 }
 
+/**
+ * printenv - print the environment * 
+ * Return: On success int 
+ */
 int printenv(void)
 {
     size_t i;
@@ -51,6 +59,10 @@ int printenv(void)
     return (0);
 }
 
+/**
+ * exit_shell - exit the process
+ * Return: On success int 
+ */
 int exit_shell(void)
 {
     int exitcheck;
@@ -73,6 +85,10 @@ int exit_shell(void)
     return (-2);
 }
 
+/**
+ * _cd - change directory
+ * Return: On success int 
+ */
 int _cd(void)
 {
 	char *dir = argv[1];

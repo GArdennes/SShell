@@ -1,5 +1,10 @@
 #include "sshell.h"
 
+/**
+ * _strdup - strdup function
+ * @str: string to strdup 
+ * Return: On success char* 
+ */
 char *_strdup(char *str)
 {
     size_t length, index;
@@ -21,6 +26,12 @@ char *_strdup(char *str)
     return (ret);
 }
 
+/**
+ * count_words - count words in a string
+ * @str: the string to count 
+ * @d: the string to check 
+ * Return: On success int 
+ */
 int count_words(char *str, char *d)
 {
     int numwords = 0;
@@ -40,6 +51,11 @@ int count_words(char *str, char *d)
     return numwords;
 }
 
+/**
+ * allocate_string_array - allocate a string array
+ * @size: size of the array 
+ * Return: On success char** 
+ */
 char **allocate_string_array(int size)
 {
     char **s = malloc((size + 1) * sizeof(char *));
@@ -50,6 +66,12 @@ char **allocate_string_array(int size)
     return s;
 }
 
+/**
+ * split_string - split a string into tokens 
+ * @str: the string to split 
+ * @d: the delimiter 
+ * @result: the result 
+ */
 void split_string(char *str, char *d, char **result)
 {
     int i, j, k, m;
@@ -79,6 +101,12 @@ void split_string(char *str, char *d, char **result)
     result[j] = NULL;
 }
 
+/**
+ * _strtow - strtok function
+ * @str: the string to check 
+ * @d: the delimiter 
+ * Return: On success char** 
+ */
 char **_strtow(char *str, char *d)
 {
     char **result;

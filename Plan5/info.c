@@ -1,5 +1,8 @@
 #include "sshell.h"
 
+/**
+ * clear_info - clear all information * 
+ */
 void clear_info(void)
 {
 	arg = NULL;
@@ -9,6 +12,10 @@ void clear_info(void)
 	line_count = 0;
 }
 
+/**
+ * set_info - set information * 
+ * @av: the argument 
+ */
 void set_info(char **av)
 {
 	int i = 0;
@@ -32,6 +39,10 @@ void set_info(char **av)
 	}
 }
 
+/**
+ * free_info - free information
+ * @all: checks whether the information should be freed
+ */
 void free_info(int all)
 {
 	ffree(argv);
@@ -44,6 +55,12 @@ void free_info(int all)
 	}
 }
 
+/**
+ * find_path - find the path to the directory * 
+ * @str: the path to search 
+ * @cmd: the command to execute 
+ * Return: On success char* 
+ */
 char *find_path(char *str, char *cmd)
 {
 	int i = 0, curr_pos = 0;

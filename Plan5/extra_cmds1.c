@@ -88,7 +88,6 @@ return (0);
 
 /**
  * _mysetenv - set the environment
- * @args: Arguments to check
  * Return: On success call another function
  */
 int _mysetenv(void)
@@ -103,6 +102,10 @@ int _mysetenv(void)
     return (1);
 }
 
+/**
+ * _myunsetenv - unset the environment variable * 
+ * Return: On success int 
+ */
 int _myunsetenv(void)
 {
     int i;

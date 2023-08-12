@@ -1,5 +1,12 @@
 #include "sshell.h"
 
+/**
+ * _strncat - strncat function
+ * @dest: destination 
+ * @src: source 
+ * @len: destination length 
+ * Return: On success char* 
+ */
 char *_strncat(char *dest, char *src, int len)
 {
     char *ptr = dest;
@@ -20,6 +27,13 @@ char *_strncat(char *dest, char *src, int len)
     return (ptr);
 }
 
+/**
+ * _strncpy - strncpy function
+ * @dest: destination string 
+ * @src: source string 
+ * @len: length of string 
+ * Return: On success char* 
+ */
 char *_strncpy(char *dest, char *src, int len)
 {
     int i;
@@ -33,6 +47,13 @@ char *_strncpy(char *dest, char *src, int len)
     return (dest);
 }
 
+/**
+ * _strncmp - strncmp function
+ * @s1: string 
+ * @s2: string 
+ * @len: number of characters 
+ * Return: On success int 
+ */
 int _strncmp(char *s1, char *s2, size_t len)
 {
 	size_t i;
@@ -44,6 +65,13 @@ int _strncmp(char *s1, char *s2, size_t len)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
+/**
+ * dup_chars - duplicate characters
+ * @str: the string to duplicate 
+ * @start: the start 
+ * @stop: the stop  
+ * Return: On success char* 
+ */
 char *dup_chars(char *str, int start, int stop)
 {
     char *result;

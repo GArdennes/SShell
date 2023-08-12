@@ -1,5 +1,11 @@
 #include "sshell.h"
 
+/**
+ * _strcat - strcat function
+ * @dest: the destination string 
+ * @src: the source string 
+ * Return: On success char* 
+ */
 char *_strcat(char *dest, char *src)
 {
     char *ptr;
@@ -22,6 +28,12 @@ char *_strcat(char *dest, char *src)
     return (dest);
 }
 
+/**
+ * _strcpy - strcpy function
+ * @dest: destination string 
+ * @src: source string 
+ * Return: On success char* 
+ */
 char *_strcpy(char *dest, char *src)
 {
 	int i = 0;
@@ -35,4 +47,22 @@ char *_strcpy(char *dest, char *src)
 	}
 	dest[i] = 0;
 	return (dest);
+}
+
+/**
+ * handle_comments - handle comments
+ * @command: the command string 
+ */
+void handle_comments(char *command)
+{
+	int i;
+
+	for (i = 0; command[i] != '\0'; i++)
+	{
+		if (command[i] == '#')
+		{
+			command[i] = '\0';
+			break;
+		}
+	}
 }

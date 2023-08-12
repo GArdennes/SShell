@@ -1,5 +1,11 @@
 #include "sshell.h"
 
+/**
+ * is_delim - function to check if a string is a delimiter
+ * @c: the character to check 
+ * @delim: the string to check 
+ * Return: On success int 
+ */
 int is_delim(char c, char *delim)
 {
 	while (*delim)
@@ -10,6 +16,12 @@ int is_delim(char c, char *delim)
 	return (0);
 }
 
+/**
+ * input_buf - function to read input 
+ * @buf: input buffer 
+ * @len: length of input buffer 
+ * Return: On success ssize_t 
+ */
 ssize_t input_buf(char **buf, size_t *len)
 {
 	ssize_t r = 0;
@@ -29,6 +41,7 @@ ssize_t input_buf(char **buf, size_t *len)
 				r--;
 			}
 			linecount_flag = 1;
+			handle_comments(*buf);
 			*len = r;
 			cmd_buf = buf;
 		}
@@ -36,6 +49,10 @@ ssize_t input_buf(char **buf, size_t *len)
 	return (r);
 }
 
+/**
+ * get_input - get input from commandline
+ * Return: On success ssize_t 
+ */
 ssize_t get_input(void)
 {
 	static char *buf; 
@@ -69,6 +86,11 @@ ssize_t get_input(void)
 	return (r);
 }
 
+/**
+ * is_cmd - returns true if the command is a command
+ * @pp: command string 
+ * Return: On success int 
+ */
 int is_cmd(char *pp)
 {
 	struct stat st;

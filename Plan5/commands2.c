@@ -1,10 +1,17 @@
 #include "sshell.h"
 
+/**
+ * interactive - command * 
+ * Return: On success int 
+ */
 int interactive(void)
 {
 	return (isatty(STDIN_FILENO));
 }
 
+/**
+ * find_cmd - command 
+ */
 void find_cmd(void)
 {
 	char *pp = NULL;
@@ -42,6 +49,11 @@ void find_cmd(void)
 	}
 }
 
+/**
+ * hsh - main shell loop 
+ * @av: commands 
+ * Return: On success int 
+ */
 int hsh(char **av)
 {
 	ssize_t r = 0;
