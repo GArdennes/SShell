@@ -23,7 +23,7 @@ void set_info(char **av)
 	fname = av[0];
 	if (arg)
 	{
-		argv = _strtow(arg, " \t");
+		argv = _strtok(arg, " \t");
 		if (argv == NULL)
 		{
 			argv = malloc(sizeof(char *) * 2);

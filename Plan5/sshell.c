@@ -8,7 +8,7 @@
  */
 int main(__attribute__((unused))int ac, char **av)
 {
-	hsh(av);
+	shell(av);
 	return (EXIT_SUCCESS);
 }
 

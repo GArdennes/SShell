@@ -30,13 +30,13 @@ int err_num;
 
 int _putchar(char c);
 void _puts(char *str);
-int _eputchar(char c);
-void _eputs(char *c);
+int err_putchar(char c);
+void err_puts(char *c);
 void print_error(char *str);
 void clear_info(void);
 int interactive(void);
 int is_delim(char c, char *delim);
-char **_strtow(char *str, char *d);
+char **_strtok(char *str, char *d);
 char *_strdup(char *str);
 int replace_string(char **src, char *dest);
 int _strcmp(const char *s1, const char *s2);
@@ -61,7 +61,7 @@ char *_strcpy(char *dest, char *src);
 void fork_cmd(void);
 char *_memset(char *s, char b, unsigned int n);
 void find_cmd(void);
-int hsh(char **av);
+int shell(char **av);
 void sigintHandler(int sig_num);
 int print_d(int input, int fd);
 

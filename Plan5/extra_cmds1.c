@@ -30,7 +30,7 @@ int _mysetenv(void)
 {
 if (argv[2] == NULL)
 {
-_eputs("setenv error");
+err_puts("setenv error");
 return (1);
 }
 if (_setenv(argv[1], argv[2]))
@@ -48,7 +48,7 @@ int i;
 
 if (argv[1] == NULL)
 {
-_eputs("unsetenv error");
+err_puts("unsetenv error");
 return (1);
 }
 for (i = 1; i <= argc; i++)

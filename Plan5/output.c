@@ -74,11 +74,11 @@ void _puts(char *str)
  */
 void print_error(char *str)
 {
-	_eputs(fname);
-	_eputs(": ");
+	err_puts(fname);
+	err_puts(": ");
 	print_d(line_count, STDERR_FILENO);
-	_eputs(": ");
-	_eputs(argv[0]);
-	_eputs(": ");
-	_eputs(str);
+	err_puts(": ");
+	err_puts(argv[0]);
+	err_puts(": ");
+	err_puts(str);
 }

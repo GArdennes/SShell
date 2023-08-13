@@ -107,7 +107,7 @@ result[j] = NULL;
  * @d: the delimiter
  * Return: On success char**
  */
-char **_strtow(char *str, char *d)
+char **_strtok(char *str, char *d)
 {
 char **result;
 int numwords;

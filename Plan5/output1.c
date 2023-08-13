@@ -35,7 +35,7 @@ write(2, buf, j);
  * @c: the error character
  * Return: On success int
  */
-int _eputchar(char c)
+int err_putchar(char c)
 {
 static int j;
 static char buf[MAX_ARGS];
@@ -55,7 +55,7 @@ return (0);
  * _eputs - converts a string to the STDERR
  * @str: the string to be converted
  */
-void _eputs(char *str)
+void err_puts(char *str)
 {
 int j = 0;
 
@@ -63,7 +63,7 @@ if (str == NULL)
 return;
 while (str[j] != '\0')
 {
-_eputchar(str[j]);
+err_putchar(str[j]);
 j++;
 }
 }

@@ -74,8 +74,8 @@ if (exitcheck == -1)
 {
 status = 2;
 print_error("Error unaccepted number:");
-_eputs(argv[1]);
-_eputchar('\n');
+err_puts(argv[1]);
+err_putchar('\n');
 return (1);
 }
 err_num = _erratoi(argv[1]);
@@ -108,8 +108,8 @@ else if (_strcmp(dir, "-") == 0)
 else if (chdir(dir) == -1)
 {
 	print_error("cd error");
-	_eputs(argv[1]);
-	_eputchar('\n');
+	err_puts(argv[1]);
+	err_putchar('\n');
 }
 return (0);
 }

@@ -54,7 +54,7 @@ void find_cmd(void)
  * @av: commands
  * Return: On success int
  */
-int hsh(char **av)
+int shell(char **av)
 {
 	ssize_t r = 0;
 	int check = 0;
@@ -64,7 +64,7 @@ int hsh(char **av)
 		clear_info();
 		if (interactive())
 			_puts("$ ");
-		_eputchar(-1);
+		err_putchar(-1);
 		r = get_input();
 		if (r != -1)
 		{
