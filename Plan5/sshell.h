@@ -75,5 +75,6 @@ int echo_func(void);
 int _mysetenv(void);
 int _myunsetenv(void);
 void handle_comments(char *command);
+int _setenv(char *name, char *value);
 
 #endif

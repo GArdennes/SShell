@@ -58,7 +58,7 @@ free(environ);
  */
 int _setenv(char *name, char *value)
 {
-int nlen = _strlen(name), vlen = _strlen(value), i;
+int nlen = _strlen(name), i;
 int env_size;
 char *new_entry;
 char **new_environ;

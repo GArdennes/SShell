@@ -68,7 +68,7 @@ free(a);
 }
 
 /**
- * print_d: print the information
+ * print_d - print the information
  * @input: the input number
  * @fd: the file descriptor
  * Return: On success int

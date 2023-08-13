@@ -50,7 +50,7 @@ void find_cmd(void)
 }
 
 /**
- * hsh - main shell loop
+ * shell - main shell loop
  * @av: commands
  * Return: On success int
  */

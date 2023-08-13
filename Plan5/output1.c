@@ -31,7 +31,7 @@ write(2, buf, j);
 }
 
 /**
- * _eputchar - prints the error character
+ * err_putchar - prints the error character
  * @c: the error character
  * Return: On success int
  */
@@ -52,7 +52,7 @@ return (0);
 }
 
 /**
- * _eputs - converts a string to the STDERR
+ * err_puts - converts a string to the STDERR
  * @str: the string to be converted
  */
 void err_puts(char *str)

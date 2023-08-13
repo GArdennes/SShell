@@ -102,7 +102,7 @@ result[j] = NULL;
 }
 
 /**
- * _strtow - strtok function
+ * _strtok - strtok function
  * @str: the string to check
  * @d: the delimiter
  * Return: On success char**
