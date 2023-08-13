@@ -1,0 +1,379 @@
+int _putchar(char c);
+void _puts(char *str);
+int _eputchar(char c); /* err_putchar */
+void _eputs(char *c); /* err_puts */
+void print_error(char *str);
+void clear_info(void);
+int interactive(void);
+int is_delim(char c, char *delim);
+char **_strtow(char *str, char *d); /* _strtok */
+char *_strdup(char *str);
+int replace_string(char **src, char *dest);
+int _strcmp(const char *s1, const char *s2);
+char *convert_number(long int num, int base, int flags);
+char *starts_with(const char *s1, const char *s2);
+char *_getenv(char *name);
+void ffree(char **str);
+void set_info(char **av);
+void free_info(int all);
+char *_strchr(char *s, char c);
+char *_strncat(char *dest, char *src, int len);
+char *_strncpy(char *dest, char *src, int len);
+int _strncmp(char *s1, char *s2, size_t len);
+ssize_t input_buf(char **buf, size_t *len);
+ssize_t get_input(void);
+int is_cmd(char *);
+char *dup_chars(char *str, int start, int stop);
+int _strlen(char *s);
+char *_strcat(char *dest, char *src);
+char *find_path(char *str, char *cmd);
+char *_strcpy(char *dest, char *src);
+void fork_cmd(void);
+char *_memset(char *s, char b, unsigned int n);
+void find_cmd(void);
+int hsh(char **av); /* shell */
+void sigintHandler(int sig_num);
+int print_d(int input, int fd);
+
+/*functions for builtin commands*/
+int execute_cmds(void);
+int printenv(void);
+int _erratoi(char *s);
+int exit_shell(void);
+int _cd(void);
+int echo_func(void);
+int _mysetenv(void);
+int _myunsetenv(void);
+void handle_comments(char *command);
+
+COMMANDS.C
+-------------------------------
+char *starts_with()
+
+void wait_for_child()
+
+void handle_child_status()
+{
+print_error()
+}
+
+void execute_cmd()
+{
+free_info()
+}
+
+void fork_cmd()
+{
+wait_for_child()
+handle_child_status()
+}
+
+
+COMMANDS2.C
+-------------------------------
+int interactive()
+
+void find_cmd()
+{
+is_delim()
+find_path()
+_getenv()
+fork_cmd()
+interactive()
+fork_cmd()
+print_error()
+}
+
+int hsh()
+{
+clear_info()
+interactive()
+_puts()
+_eputchar()
+get_input()
+set_info()
+execute_cmds()
+find_cmd()
+free_info()
+}
+
+CONVERTER.C
+---------------------
+char *convert_to_string()
+
+char *handle_sign()
+
+char *convert_number()
+{
+convert_to_string()
+handle_sign()
+}
+
+void ffree()
+{
+free()
+}
+
+int print_d()
+{
+_putchar()
+_eputchar()
+}
+
+ENVIRON.C
+-----------------------
+int get_env_size()
+
+char *create_new_entry()
+{
+_strlen()
+_strcpy()
+_strcat()
+}
+
+void free_environment()
+{
+free()
+}
+
+int _setenv()
+{
+_strlen()
+_strncmp()
+create_new_entry()
+free()
+get_env_size()
+free_environment()
+}
+
+ENVIRONMENT.C
+------------------------
+char *_getenv()
+{
+_strlen()
+_strncmp()
+_strlen()
+}
+
+char *_memset()
+
+
+EXTRA_CMDS.C
+------------------------
+int execute_cmds()
+{
+_strcmp()
+printenv()
+exit_shell()
+_cd()
+_mysetenv()
+_myunsetenv()
+}
+
+int printenv()
+{
+_strlen()
+}
+
+int exit_shell()
+{
+_erratoi()
+print_error()
+_eputs()
+_eputchar()
+}
+
+int _cd()
+{
+_getenv()
+_strcmp()
+print_error()
+_eputs()
+_eputchar()
+}
+
+
+EXTRA_CMDS1.C
+----------------------
+int _unsetenv()
+{
+_strlen()
+_strncmp()
+}
+
+int mysetenv()
+{
+_eputs()
+_setenv()
+}
+
+int _myunsetenv()
+{
+_eputs()
+_unsetenv()
+}
+
+INFO.C
+----------------------
+void clear_info()
+
+void set_info()
+{
+_strtow()
+_strdup()
+}
+
+void free_info()
+{
+ffree()
+_putchar()
+}
+
+char *find_path()
+{
+_strlen()
+starts_with()
+is_cmd()
+dup_chars()
+_strcat()
+}
+
+
+INPUT.C
+---------------------------
+int is_delim()
+
+ssize_t input_buf()
+{
+sigintHandler()
+handle_comments()
+}
+
+ssize_t get_input()
+{
+_putchar()
+input_buf()
+_strlen()
+}
+
+int is_cmd()
+
+
+OUTPUT.C
+---------------------------
+void write_to_buffer()
+
+void _flush_buffer()
+
+int _putchar()
+{
+write_to_buffer()
+_flush_buffer()
+}
+
+void _puts()
+{
+_putchar()
+}
+
+void print_error()
+{
+_eputs()
+print_d()
+}
+
+
+OUTPUT1.C
+--------------------------
+void ewrite_to_buffer()
+
+void eflush_buffer()
+
+int _eputchar()
+{
+ewrite_to_buffer()
+eflush_buffer()
+}
+
+void _eputs()
+{
+_eputchar()
+}
+
+int _erratoi()
+
+SSHELL.C
+-------------------------
+int main()
+{
+hsh()
+}
+
+void sigintHandler()
+{
+_puts()
+_putchar()
+}
+
+
+STRING.C
+-------------------------
+char *_strdup()
+{
+_strlen()
+}
+
+int count_words()
+{
+is_delim()
+}
+
+char **allocate_string_array()
+
+void split_string()
+{
+count_words()
+is_delim()
+free()
+}
+
+char **_strtow()
+{
+count_words()
+allocate_string_array()
+split_string()
+}
+
+
+STRING1.C
+-----------------------------
+int replace_string()
+
+int _strlen()
+
+int _strcmp()
+
+char *_strchr()
+
+
+STRING2.C
+-----------------------------
+char *_strncat()
+
+char *_strncpy()
+
+int _strncmp()
+
+char *dup_chars()
+
+
+STRING3.C
+-----------------------------
+char *_strcat()
+
+char *_strcpy()
+
+void handle_comments()
+
+
+
